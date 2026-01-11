@@ -1,4 +1,11 @@
 {
+  "name": "Safina",
+  "short_name": "Safina",
+  "description": "AI-powered expense tracking for modern Muslims",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2d5a6b",
   "icons": [
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/icon-mask.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" },

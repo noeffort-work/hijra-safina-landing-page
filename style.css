@@ -4,20 +4,31 @@
     --font-display: "Inter", "sans-serif";
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    /* Safina Brand Colors */
+    --color-brand-50: oklch(0.97 0.02 220.85);
+    --color-brand-100: oklch(0.91 0.03 220.85);
+    --color-brand-200: oklch(0.82 0.04 220.85);
+    --color-brand-500: oklch(0.453 0.082 220.85);
+    --color-brand-600: oklch(0.35 0.082 220.85);
+
+    /* Secondary Brand (Teal) */
+    --color-secondary-brand-500: oklch(0.696 0.159 151.711);
+    --color-secondary-brand-600: oklch(0.596 0.154 151.547);
 }
 
-    .blinking-cursor {
-      font-weight: 500;
-      color: #4f46e5; /* Indigo color to match */
-      animation: blink 1s step-end infinite;
-    }
+.blinking-cursor {
+  font-weight: 500;
+  color: oklch(0.453 0.082 220.85);
+  animation: blink 1s step-end infinite;
+}
 
-    @keyframes blink {
-      from,
-      to {
-        color: transparent;
-      }
-      50% {
-        color: #4f46e5;
-      }
-    }
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: oklch(0.453 0.082 220.85);
+  }
+}

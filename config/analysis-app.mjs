@@ -1,7 +1,7 @@
 import { IS_PRODUCTION } from "./app.mjs"
 
-export const DEVELOPMENT_ANALYSIS_APP_HOSTNAME = 'app.dev.finalytics.id'
-export const PRODUCTION_ANALYSIS_APP_HOSTNAME = 'app.finalytics.id'
+export const DEVELOPMENT_ANALYSIS_APP_HOSTNAME = 'app.dev.safinalab.id'
+export const PRODUCTION_ANALYSIS_APP_HOSTNAME = 'app.safinalab.id'
 export const CURRENT_ANALYSIS_APP_HOSTNAME = IS_PRODUCTION
     ? PRODUCTION_ANALYSIS_APP_HOSTNAME
     : DEVELOPMENT_ANALYSIS_APP_HOSTNAME
