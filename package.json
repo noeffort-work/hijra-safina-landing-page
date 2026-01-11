@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm run css:dev",
+    "build": "pnpm run css:prod",
+    "css:dev": "pnpm dlx @tailwindcss/cli --input ./style.css --output ./output.css --watch",
+    "css:prod": "pnpm dlx @tailwindcss/cli --input ./style.css --output ./output.css --minify --map"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}

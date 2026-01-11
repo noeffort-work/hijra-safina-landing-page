@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Finalytics is an AI-powered platform that helps you analyze your business data, from sales reports to profit & loss, to make smarter decisions."
+    />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Finalytics</title>
+
+    <script type="module" src="./side-effects/auto-replace-analysis-app-href.mjs" defer></script>
+  </head>
+  <body class="font-inter bg-gray-50">
+    <nav class="sticky top-0 bg-gray-50 z-50">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-3 items-center px-4 py-4"
+      >
+        <img
+          src="./assets/logo/logo-text.svg"
+          class="h-10 w-auto"
+          alt="Finalytics Logo"
+        />
+
+        <div class="hidden md:flex items-center justify-center gap-6">
+          <a
+            href="#features"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            data-translate-key="nav_features"
+            >Features</a
+          >
+          <a
+            href="#pricing"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            data-translate-key="nav_pricing"
+            >Pricing</a
+          >
+          <a
+            href="#faq"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            data-translate-key="nav_faq"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            data-translate-key="nav_contact"
+            >Contact</a
+          >
+        </div>
+
+        <div class="hidden md:flex items-center justify-end gap-2">
+          <div class="relative" id="lang-switcher">
+            <button
+              id="lang-btn"
+              class="flex items-center gap-2 hover:bg-gray-100 rounded-md px-3 py-2"
+            >
+              <img src="./assets/globe.svg" class="w-5 h-5" alt="Language" />
+              <span id="lang-text" class="font-medium text-gray-600">EN</span>
+               <img src="./assets/arrow-down.svg" class="w-4 h-4" alt="arrow" />
+            </button>
+            <div
+              id="lang-menu"
+              class="hidden absolute right-0 mt-2 w-36 bg-white rounded-md shadow-lg border border-gray-100"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                data-lang="en"
+                >English (EN)</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                data-lang="id"
+                >Indonesia (ID)</a
+              >
+            </div>
+          </div>
+          
+          <a
+            href="https://app.finalytics.id/"
+            class="bg-indigo-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-indigo-600"
+            data-translate-key="login_button"
+          >
+            Login
+          </a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden justify-self-end" aria-label="Open menu">
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden flex flex-col gap-4 px-6 py-4 bg-gray-50"
+      >
+        <a href="#features" class="text-gray-800" data-translate-key="nav_features_mob">Features</a>
+        <a href="#pricing" class="text-gray-800" data-translate-key="nav_pricing_mob">Pricing</a>
+        <a href="#faq" class="text-gray-800" data-translate-key="nav_faq_mob">FAQ</a>
+        <a href="#contact" class="text-gray-800" data-translate-key="nav_contact_mob">Contact</a>
+        <a
+          href="./registration.html"
+          class="text-gray-800 border border-gray-300 px-4 py-2 rounded-md text-center"
+          data-translate-key="nav_register_mob"
+        >
+          Register
+        </a>
+        <a
+          href="./activation.html"
+          class="text-indigo-600 border border-indigo-500 px-4 py-2 rounded-md text-center"
+          data-translate-key="nav_activate_code_mob"
+        >
+          Activation
+        </a>
+        <a
+          href="https://app.finalytics.id/"
+          class="bg-indigo-500 text-white text-center px-4 py-2 rounded-md"
+          data-translate-key="login_button_mob"
+          >Login</a
+        >
+      </div>
+    </nav>
+
+    <section id="hero" class="px-4 sm:px-6 mt-12 text-center">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/ai.svg" alt="" srcset="" />
+          <span data-translate-key="hero_badge">AI Powered</span>
+        </span>
+        <h1
+  class="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight tracking-tighter"
+>
+  <span data-translate-key="hero_title_part1">An AI-powered platform that works like your</span>
+  <span
+    class="bg-indigo-100 text-indigo-600 px-2 rounded-lg leading-tight font-semibold"
+  >
+    <span id="typing-effect"></span><span class="blinking-cursor">|</span>
+  </span>
+  <span data-translate-key="hero_title_part2"></span>
+</h1>
+        <p
+          class="text-gray-600 text-base sm:text-lg"
+          data-translate-key="hero_subtitle"
+        >
+          From sales reports to profit & loss, everything is designed to keep
+          your business one step ahead. Our AI helps you plan smarter, hit
+          targets, and make confident decisions.
+        </p>
+        <a
+          href="mailto:contact@finalytics.id"
+          class="inline-block bg-indigo-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-600"
+          data-translate-key="hero_cta"
+        >
+          Get Started
+        </a>
+
+        <div class="mt-10">
+          <img
+            src="./assets/dashboard-preview.png"
+            alt="Dashboard preview"
+            class="w-full rounded-xl shadow"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-12">
+      <div class="max-w-6xl mx-auto text-center space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/features.svg" alt="" srcset="" />
+          <span data-translate-key="features_badge">Features</span>
+        </span>
+        <h2
+  class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tighter"
+>
+  <span data-translate-key="features_title_part1"
+    >Everything you need <br />
+    to understand your
+  </span>
+  <span
+    class="bg-indigo-100 text-indigo-600 px-2 rounded-lg font-semibold"
+  >
+    <span id="typing-effect-features"></span><span class="blinking-cursor"
+      >|</span
+    >
+  </span>
+</h2>
+        <p
+          class="text-gray-600 max-w-2xl mx-auto"
+          data-translate-key="features_subtitle"
+        >
+          From sales tracking to profit & loss reports, every feature is built
+          to help you see your numbers clearly.
+        </p>
+      </div>
+      <div class="mt-12 mx-auto max-w-6xl px-4">
+        <div class="flex flex-col-reverse md:flex-row gap-8 items-start">
+          <div class="w-full">
+            <ul class="space-y-3">
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/aisummary.png"
+                role="button"
+                tabindex="0"
+                aria-selected="true"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <div class="icon w-8 h-8 [mask:url(/assets/ai-black.svg)_center/contain_no-repeat]"></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold" data-translate-key="feature_ai_title">AI Analysis</div>
+                  <p class="desc mt-2 text-gray-600" data-translate-key="feature_ai_desc">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-compare.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <div class="icon w-8 h-8 [mask:url(/assets/chart.svg)_center/contain_no-repeat]"></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg" data-translate-key="feature_compare_title">Data Comparison</div>
+                  <p class="desc mt-2 text-gray-600" data-translate-key="feature_compare_desc">
+                    Instantly compare sales periods, like this month vs. last month, to track growth and identify key trends.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/dashboard.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <div class="icon w-8 h-8 [mask:url(/assets/summary.svg)_center/contain_no-repeat]"></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg" data-translate-key="feature_summary_title">
+                    Data Summarization
+                  </div>
+                  <p class="desc mt-2 text-gray-600" data-translate-key="feature_summary_desc">
+                    Get quick, digestible summaries of your financial performance without needing to sift through raw numbers.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/managedata.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <div class="icon w-8 h-8 [mask:url(/assets/data.svg)_center/contain_no-repeat]"></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg" data-translate-key="feature_data_title">Data Management</div>
+                  <p class="desc mt-2 text-gray-600" data-translate-key="feature_data_desc">
+                    Easily organize, edit, and manage all your business records in one secure, centralized location.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-calculate.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <div class="icon w-8 h-8 [mask:url(/assets/calculate.svg)_center/contain_no-repeat]"></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg" data-translate-key="feature_calc_title">
+                    Auto-Calculation
+                  </div>
+                  <p class="desc mt-2 text-gray-600" data-translate-key="feature_calc_desc">
+                    The system automatically calculates profits, losses, and margins, saving you time and reducing errors.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="w-full p-1.5 bg-gray-100 rounded-xl">
+            <img
+              id="featureImage"
+              src="/assets/image-ai.png"
+              alt="Feature preview"
+              class="max-h-full w-full object-contain transition-opacity duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="pricing" class="px-4 sm:px-6 py-20">
+  <div class="max-w-6xl mx-auto text-center space-y-6">
+    <span
+      class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+    >
+      <img src="./assets/pricing.svg" alt="" srcset="" />
+      <span data-translate-key="pricing_badge">Pricing</span>
+    </span>
+    <h2
+      class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tighter"
+      data-translate-key="pricing_title"
+    >
+      Choose the plan that fits your
+      <span
+        class="bg-indigo-100 text-indigo-600 px-2 rounded-lg font-semibold"
+        >Business</span
+      >
+    </h2>
+    <p
+      class="text-gray-600 max-w-2xl mx-auto"
+      data-translate-key="pricing_subtitle"
+    >
+      Whether you’re just starting or already growing, we have simple plans
+      to help you track sales, manage profit & loss, and stay on top of your
+      business.
+    </p>
+  </div>
+
+  <div class="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
+
+  <div class="bg-gray-100 rounded-xl p-0.5">
+    <div class="text-center label px-4 py-2 text-gray-500">
+      Great for individuals and small shops
+    </div>
+    <div class="content px-4 py-5 bg-gray-50 gap-10 grid">
+      <div class="heading">
+        <p class="font-semibold tracking-tighter text-2xl">Starter</p>
+        <p class="text-gray-500">
+          All the basic tools you need to record sales and keep your
+          reports organized.
+        </p>
+      </div>
+      <div class="price p-3 gap-4 grid border rounded-md border-gray-100">
+        <p class="text-gray-500">
+          <span class="text-gray-800 font-semibold text-4xl tracking-tighter">Free</span>
+        </p>
+        <a href="https://app.finalytics.id"
+          class="w-full block text-center bg-gray-50 border border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-gray-50 px-4 py-2 rounded-md font-semibold"
+          data-translate-key="pricing_cta1">
+          Try Now!
+        </a>
+      </div>
+      <ul class="text-gray-600 space-y-2">
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" />Record daily sales
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" />Export basic reports
+          (PDF/Excel)
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" />1 user access
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" />Email support
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-indigo-50 rounded-xl p-0.5">
+    <div class="text-center label px-4 py-2 text-indigo-600" data-translate-key="premium_label">
+      Ideal for large teams and enterprises
+    </div>
+    <div class="content px-4 py-5 bg-gray-50 gap-10 grid">
+      <div class="heading">
+        <p class="font-semibold tracking-tighter text-2xl" data-translate-key="premium_title">Premium</p>
+        <p class="text-gray-500" data-translate-key="premium_desc">
+          Advanced tools with unlimited flexibility, full customization,
+          and priority support.
+        </p>
+      </div>
+      <div class="price p-3 gap-4 grid border rounded-md border-gray-100">
+        <p class="text-gray-800 font-semibold text-2xl tracking-tighter text-center"
+          data-translate-key="price_contact_label">
+          Contact Us
+        </p>
+        <a href="https://wa.me/628123456789" target="_blank"
+          class="w-full block text-center bg-indigo-500 border border-indigo-500 text-gray-50 hover:bg-indigo-600 hover:text-gray-50 px-4 py-2 rounded-md font-semibold"
+          data-translate-key="pricing_cta_wa">
+          Chat on WhatsApp
+        </a>
+      </div>
+      <ul class="text-gray-600 space-y-2">
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" /><span data-translate-key="premium_f1">Everything in Standard</span>
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" /><span data-translate-key="premium_f2">Unlimited users</span>
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" /><span data-translate-key="premium_f3">API integration</span>
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" /><span data-translate-key="premium_f4">Custom reports &
+            dashboards</span>
+        </li>
+        <li class="flex gap-2.5">
+          <img src="./assets/check.svg" alt="" /><span data-translate-key="premium_f5">24/7 priority support</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+    <section id="faq" class="px-4 sm:px-6 py-20 bg-gray-50">
+      <div class="max-w-5xl mx-auto text-center space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/faq.svg" alt="" srcset="" />
+          <span data-translate-key="faq_badge">FAQ</span>
+        </span>
+        <h2
+          class="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tighter"
+          data-translate-key="faq_title"
+        >
+          Frequently Asked Questions
+        </h2>
+        <p class="text-gray-600" data-translate-key="faq_subtitle">
+          Quick answers to help you get started and make the most of our
+          platform.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
+            <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q1">
+              How does the AI analysis work?
+            </div>
+            <img src="assets/arrow-down.svg" alt="" class="arrow transition-transform duration-300"/>
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a1">
+            Our AI automatically processes the sales and profit data you input,
+            then gives you clear insights like trends, comparisons, and
+            summaries.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
+            <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q2">
+              Can I export my reports?
+            </div>
+            <img src="assets/arrow-down.svg" alt="" class="arrow transition-transform duration-300"/>
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a2">
+            Yes, all your data can be exported to PDF with one click, making it
+            easy to share with your team or management.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
+            <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q3">
+              How many users can access the platform?
+            </div>
+            <img src="assets/arrow-down.svg" alt="" class="arrow transition-transform duration-300"/>
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a3">
+            Starter includes 1 user, Standard supports up to 5 users, and
+            Premium offers unlimited users.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
+            <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q4">
+              Do I need to manually calculate profit and loss?
+            </div>
+            <img src="assets/arrow-down.svg" alt="" class="arrow transition-transform duration-300"/>
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a4">
+            No. Once you input your numbers, the system automatically calculates
+            profit, loss, and targets for you.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
+            <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q5">
+              Is my data safe?
+            </div>
+            <img src="assets/arrow-down.svg" alt="" class="arrow transition-transform duration-300"/>
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a5">
+            Yes, all your uploaded data is stored securely and only accessible
+            to you and your authorized team members.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
+            <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q6">
+              Can I change my plan later?
+            </div>
+            <img src="assets/arrow-down.svg" alt="" class="arrow transition-transform duration-300"/>
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a6">
+            Of course! You can upgrade or downgrade your subscription anytime
+            directly from your account settings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      id="contact"
+      class="bg-indigo-500 bg-[url(/assets/footer.png)] bg-center bg-no-repeat text-white py-10"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="space-y-2 text-center md:text-left">
+          <img src="./assets/logo/logo-text-white.svg" alt="Finalytics Logo" class="h-10 w-auto">
+          <p class="text-4xl tracking-tighter font-light">
+            contact@finalytics.id
+          </p>
+          <p class="mt-10 text-gray-200" data-translate-key="footer_copyright">
+            © 2025 <a href="/" class="underline">finalytics.id</a> All Rights Reserved
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+    <script>
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+      accordionHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+          const answer = header.nextElementSibling;
+          const arrow = header.querySelector(".arrow");
+          answer.classList.toggle("hidden");
+          arrow.classList.toggle("rotate-180");
+        });
+      });
+    </script>
+    <script>
+      const featureItems = document.querySelectorAll(".feature-item");
+      const featureImg = document.getElementById("featureImage");
+
+      function activateFeature(item) {
+        featureItems.forEach((i) => {
+          i.classList.remove("bg-gray-100");
+          i.setAttribute("aria-selected", "false");
+          const d = i.querySelector(".desc");
+          if (d) d.classList.add("hidden");
+          const t = i.querySelector(".title");
+          if (t) t.classList.remove("font-semibold", "text-gray-800"), t.classList.add("text-gray-400");
+          const ic = i.querySelector(".icon");
+          if (ic) ic.classList.remove("bg-gray-800"), ic.classList.add("bg-gray-400");
+        });
+
+        item.classList.add("bg-gray-100");
+        item.setAttribute("aria-selected", "true");
+        const desc = item.querySelector(".desc");
+        if (desc) desc.classList.remove("hidden");
+        const title = item.querySelector(".title");
+        if (title) title.classList.add("font-semibold", "text-gray-800"), title.classList.remove("text-gray-400");
+        const icon = item.querySelector(".icon");
+        if (icon) icon.classList.add("bg-gray-800"), icon.classList.remove("bg-gray-400");
+
+        const newSrc = item.dataset.image;
+        if (!newSrc) return;
+        featureImg.classList.add("opacity-0");
+        setTimeout(() => {
+          featureImg.src = newSrc;
+          featureImg.classList.remove("opacity-0");
+        }, 150);
+      }
+
+      featureItems.forEach((item) => {
+        item.addEventListener("click", () => activateFeature(item));
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            activateFeature(item);
+          }
+        });
+      });
+
+      const initiallyActiveFeature = document.querySelector('.feature-item[aria-selected="true"]') || featureItems[0];
+      if (initiallyActiveFeature) activateFeature(initiallyActiveFeature);
+    </script>
+
+    <script>
+  // --- TRANSLATIONS OBJECT ---
+  const translations = {
+    nav_features: { en: "Features", id: "Fitur" },
+    nav_pricing: { en: "Pricing", id: "Harga" },
+    nav_faq: { en: "FAQ", id: "Tanya Jawab" },
+    nav_contact: { en: "Contact", id: "Kontak" },
+    nav_features_mob: { en: "Features", id: "Fitur" },
+    nav_pricing_mob: { en: "Pricing", id: "Harga" },
+    nav_faq_mob: { en: "FAQ", id: "Tanya Jawab" },
+    nav_contact_mob: { en: "Contact", id: "Kontak" },
+    nav_register: { en: "Register", id: "Daftar" },
+    nav_register_mob: { en: "Register", id: "Daftar" },
+    nav_activate_code: { en: "Activation", id: "Aktivasi" },
+    nav_activate_code_mob: { en: "Activation", id: "Aktivasi" },
+    login_button: { en: "Login", id: "Masuk" },
+    login_button_mob: { en: "Login", id: "Masuk" },
+    hero_badge: { en: "AI Powered", id: "Ditenagai AI" },hero_title_part1: { en: "An AI-powered platform that works like your", id: "Platform berbasis AI yang bekerja seperti" },
+    hero_title_part2: { en: "", id: " Anda" },
+    hero_typing_words: { en: ["Analyst", "CFO", "Financial Consultant"], id: ["Analis", "CFO", "Konsultan Keuangan"] },
+    hero_subtitle: { en: "From sales reports to profit & loss, everything is designed to keep your business one step ahead. Our AI helps you plan smarter, hit targets, and make confident decisions.", id: "Dari laporan penjualan hingga laba rugi, semuanya dirancang untuk menjaga bisnis Anda selangkah lebih maju. AI kami membantu Anda merencanakan lebih cerdas, mencapai target, dan membuat keputusan dengan percaya diri." },
+    hero_cta: { en: "Get Started", id: "Mulai Sekarang" },
+    features_badge: { en: "Features", id: "Fitur" },
+    features_title_part1: { en: "Everything you need <br /> to understand your", id: "Semua yang Anda butuhkan <br /> untuk memahami" },
+    features_typing_words: { en: ["Business Data", "Profitability", "Financial Ratio"], id: ["Data Bisnis", "Profitabilitas", "Rasio Keuangan"] },
+    features_subtitle: { en: "From sales tracking to profit & loss reports, every feature is built to help you see your numbers clearly.", id: "Dari pelacakan penjualan hingga laporan laba rugi, setiap fitur dibuat untuk membantu Anda melihat angka-angka Anda dengan jelas." },
+    feature_ai_title: { en: "AI Analysis", id: "Analisis AI"},
+    feature_ai_desc: { en: "Let AI analyze your data for you. Receive smart recommendations that help you make faster, smarter business decisions.", id: "Biarkan AI menganalisis data Anda. Terima rekomendasi cerdas yang membantu Anda membuat keputusan bisnis lebih cepat dan cerdas."},
+    feature_compare_title: { en: "Data Comparison", id: "Perbandingan Data" },
+    feature_compare_desc: { en: "Instantly compare sales periods, like this month vs. last month, to track growth and identify key trends.", id: "Bandingkan periode penjualan secara instan, seperti bulan ini vs. bulan lalu, untuk melacak pertumbuhan dan mengidentifikasi tren utama."},
+    feature_summary_title: { en: "Data Summarization", id: "Rangkuman Data" },
+    feature_summary_desc: { en: "Get quick, digestible summaries of your financial performance without needing to sift through raw numbers.", id: "Dapatkan rangkuman kinerja keuangan Anda yang cepat dan mudah dicerna tanpa harus memilah-milah angka mentah."},
+    feature_data_title: { en: "Data Management", id: "Manajemen Data" },
+    feature_data_desc: { en: "Easily organize, edit, and manage all your business records in one secure, centralized location.", id: "Atur, edit, dan kelola semua catatan bisnis Anda dengan mudah di satu lokasi terpusat yang aman."},
+    feature_calc_title: { en: "Auto-Calculation", id: "Kalkulasi Otomatis" },
+    feature_calc_desc: { en: "The system automatically calculates profits, losses, and margins, saving you time and reducing errors.", id: "Sistem secara otomatis menghitung keuntungan, kerugian, dan margin, menghemat waktu Anda dan mengurangi kesalahan."},
+    feature_export_title: { en: "Export to PDF", id: "Ekspor ke PDF" },
+    feature_export_desc: { en: "Download professional-looking reports in PDF format with a single click, ready for sharing or printing.", id: "Unduh laporan berpenampilan profesional dalam format PDF dengan satu klik, siap untuk dibagikan atau dicetak."},
+    pricing_badge: { en: "Pricing", id: "Harga" },
+    pricing_title: { en: "Choose the plan that fits your <span class='bg-indigo-100 text-indigo-600 px-2 rounded-lg font-semibold'>Business</span>", id: "Pilih paket yang sesuai dengan <span class='bg-indigo-100 text-indigo-600 px-2 rounded-lg font-semibold'>Bisnis</span> Anda" },
+    pricing_subtitle: { en: "Whether you're just starting or already growing, we have simple plans to help you track sales, manage profit & loss, and stay on top of your business.", id: "Baik Anda baru memulai atau sudah berkembang, kami memiliki paket sederhana untuk membantu Anda melacak penjualan, mengelola laba rugi, dan tetap mengontrol bisnis Anda." },
+    pricing_cta1: { en: "Try Now!", id: "Coba Sekarang!" },
+    price_contact_label: { en: "Contact Us", id: "Hubungi Kami" },
+    pricing_cta_wa: { en: "Chat on WhatsApp", id: "Chat via WhatsApp" },
+    standard_label: { en: "Best for growing businesses", id: "Terbaik untuk bisnis yang sedang berkembang" },
+    standard_title: { en: "Standard", id: "Standar" },
+    standard_desc: { en: "Everything you need to track targets, compare results, and manage your team.", id: "Semua yang Anda butuhkan untuk melacak target, membandingkan hasil, dan mengelola tim Anda." },
+    standard_price_unit: { en: "Rp <span class='text-gray-800 font-semibold text-4xl tracking-tighter'>500.000</span> / month", id: "Rp <span class='text-gray-800 font-semibold text-4xl tracking-tighter'>500.000</span> / bulan" },
+    standard_f1: { en: "Everything in Starter", id: "Semua yang ada di paket Pemula" },
+    standard_f2: { en: "Multi-user access (up to 5 users)", id: "Akses multi-pengguna (hingga 5)" },
+    standard_f3: { en: "Sales targets & comparisons", id: "Target & perbandingan penjualan" },
+    standard_f4: { en: "Automated report notifications", id: "Notifikasi laporan otomatis" },
+    standard_f5: { en: "WhatsApp support", id: "Dukungan WhatsApp" },
+    premium_label: { en: "Ideal for large teams and enterprises", id: "Ideal untuk tim besar dan perusahaan" },
+    premium_title: { en: "Premium", id: "Premium" },
+    premium_desc: { en: "Advanced tools with unlimited flexibility, full customization, and priority support.", id: "Alat canggih dengan fleksibilitas tak terbatas, kustomisasi penuh, dan dukungan prioritas." },
+    premium_price_unit: { en: "Rp <span class='text-gray-800 font-semibold text-4xl tracking-tighter'>1.000.000</span> / month", id: "Rp <span class='text-gray-800 font-semibold text-4xl tracking-tighter'>1.000.000</span> / bulan" },
+    premium_f1: { en: "Everything in Standard", id: "Semua yang ada di paket Standar" },
+    premium_f2: { en: "Unlimited users", id: "Pengguna tak terbatas" },
+    premium_f3: { en: "API integration", id: "Integrasi API" },
+    premium_f4: { en: "Custom reports & dashboards", id: "Laporan & dasbor khusus" },
+    premium_f5: { en: "24/7 priority support", id: "Dukungan prioritas 24/7" },
+    faq_badge: { en: "FAQ", id: "Tanya Jawab" },
+    faq_title: { en: "Frequently Asked Questions", id: "Pertanyaan yang Sering Diajukan" },
+    faq_subtitle: { en: "Quick answers to help you get started and make the most of our platform.", id: "Jawaban cepat untuk membantu Anda memulai dan memaksimalkan platform kami." },
+    faq_q1: { en: "How does the AI analysis work?", id: "Bagaimana cara kerja analisis AI?" },
+    faq_a1: { en: "Our AI automatically processes the sales and profit data you input, then gives you clear insights like trends, comparisons, and summaries.", id: "AI kami secara otomatis memproses data penjualan dan keuntungan yang Anda masukkan, lalu memberikan wawasan yang jelas seperti tren, perbandingan, dan ringkasan." },
+    faq_q2: { en: "Can I export my reports?", id: "Bisakah saya mengekspor laporan saya?" },
+    faq_a2: { en: "Yes, all your data can be exported to PDF with one click, making it easy to share with your team or management.", id: "Ya, semua data Anda dapat diekspor ke PDF dengan satu klik, sehingga mudah untuk dibagikan dengan tim atau manajemen Anda." },
+    faq_q3: { en: "How many users can access the platform?", id: "Berapa banyak pengguna yang dapat mengakses platform?" },
+    faq_a3: { en: "Starter includes 1 user, Standard supports up to 5 users, and Premium offers unlimited users.", id: "Paket Pemula mencakup 1 pengguna, Standar mendukung hingga 5 pengguna, dan Premium menawarkan pengguna tak terbatas." },
+    faq_q4: { en: "Do I need to manually calculate profit and loss?", id: "Apakah saya perlu menghitung laba rugi secara manual?" },
+    faq_a4: { en: "No. Once you input your numbers, the system automatically calculates profit, loss, and targets for you.", id: "Tidak. Setelah Anda memasukkan angka-angka Anda, sistem akan secara otomatis menghitung laba, rugi, dan target untuk Anda." },
+    faq_q5: { en: "Is my data safe?", id: "Apakah data saya aman?" },
+    faq_a5: { en: "Yes, all your uploaded data is stored securely and only accessible to you and your authorized team members.", id: "Ya, semua data yang Anda unggah disimpan dengan aman dan hanya dapat diakses oleh Anda dan anggota tim yang Anda beri wewenang." },
+    faq_q6: { en: "Can I change my plan later?", id: "Bisakah saya mengubah paket saya nanti?" },
+    faq_a6: { en: "Of course! You can upgrade or downgrade your subscription anytime directly from your account settings.", id: "Tentu saja! Anda dapat meningkatkan atau menurunkan langganan Anda kapan saja langsung dari pengaturan akun Anda." },
+    footer_copyright: { en: "© 2025 <a href='/' class='underline'>finalytics.id</a> All Rights Reserved", id: "© 2025 <a href='/' class='underline'>finalytics.id</a> Hak Cipta Dilindungi" },
+  };
+
+  // --- Reusable Typing Animator Class ---
+  class TypingAnimator {
+    constructor(elementId) {
+      this.element = document.getElementById(elementId);
+      this.words = [];
+      this.wordIndex = 0;
+      this.charIndex = 0;
+      this.isDeleting = false;
+      this.timeout = null;
+    }
+
+    type() {
+      if (!this.words || this.words.length === 0 || !this.element) return;
+
+      const currentWord = this.words[this.wordIndex];
+      const displayedText = this.isDeleting
+        ? currentWord.substring(0, this.charIndex - 1)
+        : currentWord.substring(0, this.charIndex + 1);
+
+      this.element.textContent = displayedText;
+      this.charIndex = this.isDeleting ? this.charIndex - 1 : this.charIndex + 1;
+
+      let delay = this.isDeleting ? 100 : 200;
+
+      if (!this.isDeleting && this.charIndex === currentWord.length) {
+        delay = 2000;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.charIndex === 0) {
+        this.isDeleting = false;
+        this.wordIndex = (this.wordIndex + 1) % this.words.length;
+        delay = 500;
+      }
+
+      this.timeout = setTimeout(() => this.type(), delay);
+    }
+
+    start(words) {
+      this.stop();
+      this.words = words;
+      this.wordIndex = 0;
+      this.charIndex = 0;
+      this.isDeleting = false;
+      this.type();
+    }
+
+    stop() {
+      clearTimeout(this.timeout);
+      if (this.element) {
+        this.element.textContent = "";
+      }
+    }
+  }
+
+  // --- Main Application Logic ---
+  const langSwitcher = document.getElementById("lang-switcher");
+  const langBtn = document.getElementById("lang-btn");
+  const langMenu = document.getElementById("lang-menu");
+  const langText = document.getElementById("lang-text");
+
+  // Create instances of the animator for each element
+  const heroAnimator = new TypingAnimator('typing-effect');
+  const featuresAnimator = new TypingAnimator('typing-effect-features');
+
+  langBtn.addEventListener("click", () => {
+    langMenu.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!langSwitcher.contains(event.target)) {
+      langMenu.classList.add("hidden");
+    }
+  });
+
+  const setLanguage = (lang) => {
+    document.querySelectorAll("[data-translate-key]").forEach(el => {
+      const key = el.getAttribute("data-translate-key");
+      if (translations[key] && translations[key][lang] !== undefined) {
+        el.innerHTML = translations[key][lang];
+      }
+    });
+
+    langText.textContent = lang.toUpperCase();
+    localStorage.setItem("language", lang);
+    langMenu.classList.add("hidden");
+
+    // Start both animations with the correct language words
+    heroAnimator.start(translations.hero_typing_words[lang]);
+    featuresAnimator.start(translations.features_typing_words[lang]);
+  };
+
+  langMenu.addEventListener("click", (e) => {
+    e.preventDefault();
+    const selectedLang = e.target.getAttribute("data-lang");
+    if(selectedLang) {
+      setLanguage(selectedLang);
+    }
+  });
+
+  const savedLang = localStorage.getItem("language") || "id";
+  setLanguage(savedLang);
+</script>
+  </body>
+</html>
