@@ -1,390 +1,716 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Safina - Asisten Keuangan AI untuk Muslim Modern</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#0e9cb4', // Cyan/Teal based logo feeling
-                        secondary: '#8bc540', // Light green
-                        dark: '#1a1a1a',
-                        surface: '#f8fafc',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            colors: {
+              primary: "#0e9cb4", // Cyan/Teal based logo feeling
+              secondary: "#8bc540", // Light green
+              dark: "#1a1a1a",
+              surface: "#f8fafc",
+            },
+          },
+        },
+      };
     </script>
-</head>
-<body class="text-gray-800 antialiased bg-white selection:bg-primary selection:text-white">
-
+  </head>
+  <body
+    class="text-gray-800 antialiased bg-white selection:bg-primary selection:text-white"
+  >
     <!-- Header / Navbar -->
-    <header class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50">
-        <nav class="bg-[#f0f2f5]/90 backdrop-blur-md rounded-full px-3 py-3 flex justify-between items-center shadow-sm border border-white/50">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-2 text-2xl font-bold text-[#3bd0d6] ml-4">
-                <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#4ade80"/>
-                            <stop offset="100%" stop-color="#0ea5e9"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M16 2C8.268 2 2 8.268 2 16c0 3.328 1.156 6.387 3.094 8.781L4 30l5.219-1.094C11.613 30.844 14.672 32 16 32c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="url(#logo-grad)"/>
-                    <path d="M8 16c2 0 3-4 5-4s3 4 5 4 2-4 4-4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                safina
-            </a>
-            
-            <!-- Navigation Links -->
-            <div class="hidden md:flex space-x-10 font-medium text-gray-700 absolute left-1/2 -translate-x-1/2">
-                <a href="#tentang" class="hover:text-primary transition">Tentang kami</a>
-                <a href="#benefit" class="hover:text-primary transition">Benefit</a>
-                <a href="#fitur" class="hover:text-primary transition">Fitur</a>
-            </div>
-            
-            <!-- CTA Button -->
-            <div>
-                <a href="#login" class="bg-primary hover:bg-opacity-90 text-white px-8 py-2.5 rounded-full font-semibold transition">
-                    Login
-                </a>
-            </div>
-        </nav>
+    <header
+      class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50"
+    >
+      <nav
+        class="bg-[#f0f2f5]/90 backdrop-blur-md rounded-full px-3 py-3 flex justify-between items-center shadow-sm border border-white/50"
+      >
+        <!-- Logo -->
+        <a
+          href="#"
+          class="flex items-center gap-2 text-2xl font-bold text-[#3bd0d6] ml-4"
+        >
+          <svg
+            class="w-8 h-8"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                id="logo-grad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stop-color="#4ade80" />
+                <stop offset="100%" stop-color="#0ea5e9" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M16 2C8.268 2 2 8.268 2 16c0 3.328 1.156 6.387 3.094 8.781L4 30l5.219-1.094C11.613 30.844 14.672 32 16 32c7.732 0 14-6.268 14-14S23.732 2 16 2z"
+              fill="url(#logo-grad)"
+            />
+            <path
+              d="M8 16c2 0 3-4 5-4s3 4 5 4 2-4 4-4"
+              stroke="white"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          safina
+        </a>
+
+        <!-- Navigation Links -->
+        <div
+          class="hidden md:flex space-x-10 font-medium text-gray-700 absolute left-1/2 -translate-x-1/2"
+        >
+          <a href="#tentang" class="hover:text-primary transition"
+            >Tentang kami</a
+          >
+          <a href="#benefit" class="hover:text-primary transition">Benefit</a>
+          <a href="#fitur" class="hover:text-primary transition">Fitur</a>
+        </div>
+
+        <!-- CTA Button -->
+        <div>
+          <a
+            href="#login"
+            class="bg-primary hover:bg-opacity-90 text-white px-8 py-2.5 rounded-full font-semibold transition"
+          >
+            Login
+          </a>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
-    <main class="pt-32 pb-0 overflow-hidden relative">
-        <div class="container mx-auto px-6 text-center max-w-5xl relative z-10">
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 text-primary text-sm font-semibold mb-8 border border-cyan-100">
-                <span class="w-2 h-2 rounded-full bg-primary relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                Asisten Keuangan AI untuk Muslim Modern
-            </div>
-            
-            <!-- Headlines -->
-            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-[1.15]">
-                Kelola Keuangan Lebih<br>Tenang Bersama Safina
-            </h1>
-            <p class="text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Asisten keuangan berbasis AI untuk Muslim modern yang ingin mengatur keuangan secara sadar, rapi, dan terarah.
-            </p>
-            
-            <!-- Call to Action -->
-            <div class="mb-12">
-                <a href="#daftar" class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 transform hover:-translate-y-1">
-                    Mulai sekarang
-                </a>
-            </div>
-            
-            <!-- Hero App Mockup -->
-            <div class="relative max-w-xl mx-auto -mb-1 md:max-w-2xl lg:max-w-3xl">
-                <!-- Glowing cyan aura -->
-                <div class="absolute top-1/2 left-[50%] -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] lg:w-[800px] lg:h-[800px] bg-[#0e9cb4] opacity-30 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
-                
-                <img src="Group 9.png" alt="Safina App Mockup" class="w-full h-auto relative z-10 block drop-shadow-2xl">
-            </div>
+    <main class="pt-32 pb-0 relative">
+      <div class="container mx-auto px-6 text-center max-w-5xl relative z-10">
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-primary text-sm font-semibold mb-8 border border-cyan-100"
+        >
+          <span class="w-2 h-2 rounded-full bg-primary relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+            ></span>
+          </span>
+          Asisten Keuangan AI untuk Muslim Modern
         </div>
+
+        <!-- Headlines -->
+        <h1
+          class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-[1.15]"
+        >
+          Kelola Keuangan Lebih<br />Tenang Bersama Safina
+        </h1>
+        <p
+          class="text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed"
+        >
+          Asisten keuangan berbasis AI untuk Muslim modern yang ingin mengatur
+          keuangan secara sadar, rapi, dan terarah.
+        </p>
+
+        <!-- Call to Action -->
+        <div class="mb-12">
+          <a
+            href="#daftar"
+            class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 transform hover:-translate-y-1"
+          >
+            Mulai sekarang
+          </a>
+        </div>
+
+        <!-- Hero App Mockup -->
+        <div
+          class="relative max-w-2xl mx-auto md:max-w-3xl lg:max-w-4xl -mt-44"
+        >
+          <!-- Glowing cyan aura -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-[#0e9cb4] opacity-30 blur-[100px] rounded-full -z-10 pointer-events-none"
+          ></div>
+
+          <img
+            src="Group 9.png"
+            alt="Safina App Mockup"
+            class="w-full h-auto relative z-10 block drop-shadow-2xl"
+          />
+        </div>
+      </div>
     </main>
 
     <!-- Tentang Kami (Dark Section) -->
-    <section id="tentang" class="bg-dark text-white py-24 relative overflow-hidden">
-        <div class="container mx-auto px-6 max-w-7xl flex flex-col lg:flex-row items-center gap-16">
-            <div class="flex-1">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-gray-400 text-sm font-medium mb-4 border border-white/5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                    Tentang kami
-                </div>
-                <h2 class="text-3xl md:text-3xl lg:text-4xl font-bold mb-5 leading-tight">Safina Membantu Kamu<br>Mengambil Kendali</h2>
-                <p class="text-gray-400 text-base mb-8 max-w-md leading-relaxed">
-                    Dengan bantuan AI, Safina mengubah data keuangan menjadi insight yang mudah dipahami dan bisa langsung kamu gunakan untuk mengambil keputusan.
-                </p>
-                <a href="#daftar" class="inline-block bg-[#0ea5e9] hover:bg-[#06b6d4] text-white px-6 py-2.5 rounded-full font-semibold text-sm transition">
-                    Mulai sekarang
-                </a>
-            </div>
-            
-            <div class="flex-1 w-full flex justify-center lg:justify-end">
-                <!-- iPhone Mockup -->
-                <img src="iMockup - iPhone 13.png" alt="Safina App Preview" class="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain drop-shadow-2xl">
-            </div>
+    <section id="tentang" class="bg-dark text-white relative overflow-hidden">
+      <div
+        class="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch"
+      >
+        <div class="flex flex-col justify-center py-20">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-gray-400 text-sm font-medium mb-4 border border-white/5 w-fit"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+            Tentang kami
+          </div>
+          <h2
+            class="text-3xl md:text-3xl lg:text-4xl font-bold mb-5 leading-tight"
+          >
+            Safina Membantu Kamu<br />Mengambil Kendali
+          </h2>
+          <p class="text-gray-400 text-base mb-8 max-w-md leading-relaxed">
+            Dengan bantuan AI, Safina mengubah data keuangan menjadi insight
+            yang mudah dipahami dan bisa langsung kamu gunakan untuk mengambil
+            keputusan.
+          </p>
+          <a
+            href="#daftar"
+            class="inline-block bg-[#0ea5e9] hover:bg-[#06b6d4] text-white px-6 py-2.5 rounded-full font-semibold text-sm transition w-fit"
+          >
+            Mulai sekarang
+          </a>
         </div>
+
+        <div class="relative flex items-end justify-center lg:justify-end">
+          <!-- iPhone Mockup -->
+          <img
+            src="iMockup - iPhone 13.png"
+            alt="Safina App Preview"
+            class="w-full h-full object-contain object-bottom drop-shadow-2xl"
+          />
+        </div>
+      </div>
     </section>
 
     <!-- Benefit Section -->
     <section id="benefit" class="py-24 bg-surface">
-        <div class="container mx-auto px-6 max-w-7xl text-center">
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-primary text-sm font-semibold mb-6 border border-gray-100 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-primary"></span>
-                Benefit
-            </div>
-            
-            <h2 class="text-4xl md:text-5xl font-bold mb-20">Kenapa Harus Memilih<br>Safina?</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Benefit 1 -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 text-left hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-[#f1adff] rounded-2xl flex items-center justify-center mb-6">
-                        <img src="neurology.svg" alt="Smart Budgeting Icon" class="w-8 h-8 object-contain">
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Smart Budgeting</h3>
-                    <p class="text-gray-500 leading-relaxed">AI membantu menyusun budget sesuai kebiasaanmu.</p>
-                </div>
-                
-                <!-- Benefit 2 -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 text-left hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-[#93cc54] rounded-2xl flex items-center justify-center mb-6">
-                        <img src="prayer_times.svg" alt="Built for Muslim Life Icon" class="w-8 h-8 object-contain">
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Built for Muslim Life</h3>
-                    <p class="text-gray-500 leading-relaxed">Dirancang untuk mendukung sedekah, zakat, dan prinsip halal.</p>
-                </div>
-                
-                <!-- Benefit 3 -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 text-left hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-[#55606b] rounded-2xl flex items-center justify-center mb-6">
-                        <img src="lock.svg" alt="Secure and Private Icon" class="w-8 h-8 object-contain">
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Secure & Private</h3>
-                    <p class="text-gray-500 leading-relaxed">Data keuanganmu aman dengan standar keamanan tinggi.</p>
-                </div>
-                
-                <!-- Benefit 4 -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 text-left hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-[#facc15] rounded-2xl flex items-center justify-center mb-6">
-                        <img src="flash_on.svg" alt="Simple and Practical Icon" class="w-8 h-8 object-contain">
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Simple & Practical</h3>
-                    <p class="text-gray-500 leading-relaxed">Antarmuka sederhana yang memudahkan navigasi dan pemakaian.</p>
-                </div>
-            </div>
+      <div class="container mx-auto px-6 max-w-7xl text-center">
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-primary text-sm font-semibold mb-6 border border-gray-100 shadow-sm"
+        >
+          <span class="w-2 h-2 rounded-full bg-primary"></span>
+          Benefit
         </div>
+
+        <h2 class="text-4xl md:text-5xl font-bold mb-20">
+          Kenapa Harus Memilih<br />Safina?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+          <!-- Benefit 1 -->
+          <div class="border-l border-gray-200 pl-8 pr-8 text-left">
+            <div
+              class="w-14 h-14 bg-[#f1adff] rounded-2xl flex items-center justify-center mb-6"
+            >
+              <img
+                src="assets/neurology.svg"
+                alt="Smart Budgeting Icon"
+                class="w-8 h-8 object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold mb-3">Smart Budgeting</h3>
+            <p class="text-gray-500 leading-relaxed">
+              AI membantu menyusun budget sesuai kebiasaanmu.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="border-l border-gray-200 pl-8 pr-8 text-left">
+            <div
+              class="w-14 h-14 bg-[#93cc54] rounded-2xl flex items-center justify-center mb-6"
+            >
+              <img
+                src="assets/prayer_times.svg"
+                alt="Built for Muslim Life Icon"
+                class="w-8 h-8 object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold mb-3">Built for Muslim Life</h3>
+            <p class="text-gray-500 leading-relaxed">
+              Dirancang untuk mendukung sedekah, zakat, dan prinsip halal.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="border-l border-gray-200 pl-8 pr-8 text-left">
+            <div
+              class="w-14 h-14 bg-[#55606b] rounded-2xl flex items-center justify-center mb-6"
+            >
+              <img
+                src="assets/lock.svg"
+                alt="Secure and Private Icon"
+                class="w-8 h-8 object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold mb-3">Secure & Private</h3>
+            <p class="text-gray-500 leading-relaxed">
+              Data keuanganmu aman dengan standar keamanan tinggi.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="border-l border-gray-200 pl-8 pr-8 text-left">
+            <div
+              class="w-14 h-14 bg-[#facc15] rounded-2xl flex items-center justify-center mb-6"
+            >
+              <img
+                src="assets/flash_on.svg"
+                alt="Simple and Practical Icon"
+                class="w-8 h-8 object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold mb-3">Simple & Practical</h3>
+            <p class="text-gray-500 leading-relaxed">
+              Antarmuka sederhana yang memudahkan.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Fitur Section -->
     <section id="fitur" class="py-24 bg-white relative">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 text-primary text-sm font-semibold mb-6 border border-cyan-100">
-                    <span class="w-2 h-2 rounded-full bg-primary"></span>
-                    Fitur
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Safina Membantu Kamu<br>Mengambil Kendali</h2>
-                <p class="text-gray-500 text-lg leading-relaxed">
-                    Dengan bantuan AI, Safina mengubah data keuangan menjadi insight yang mudah dipahami dan bisa langsung kamu gunakan untuk mengambil keputusan.
-                </p>
-            </div>
-
-            <!-- Features Masonry Layout -->
-            <div class="flex flex-col lg:flex-row gap-8 mb-8">
-                <!-- Left Column -->
-                <div class="flex-1 flex flex-col gap-8">
-                    <!-- Fitur 1: Catat & Pantau -->
-                    <div class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition">
-                        <div class="mb-10 bg-white rounded-3xl p-6 shadow-sm border border-gray-50">
-                            <div class="flex gap-4 mb-6">
-                                <div class="flex-1 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                                        <div class="w-8 h-8 rounded-full bg-green-50 flex justify-center items-center text-secondary">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                                        </div>
-                                        Pemasukan
-                                    </div>
-                                    <div class="text-xl font-extrabold text-gray-900">Rp 10.000.000</div>
-                                    <div class="text-secondary text-sm font-semibold mt-2 flex items-center gap-1">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                        20%
-                                    </div>
-                                </div>
-                                <div class="flex-1 bg-secondary text-white p-4 rounded-xl shadow-sm relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-8 translate-x-8"></div>
-                                    <div class="flex items-center gap-2 text-sm text-green-100 mb-2 font-medium">
-                                        <div class="w-8 h-8 rounded-full bg-white/20 flex justify-center items-center">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
-                                        </div>
-                                        Pengeluaran
-                                    </div>
-                                    <div class="text-xl font-extrabold text-white">Rp 7.700.000</div>
-                                    <div class="text-green-100 text-sm font-semibold mt-2 flex items-center gap-1">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
-                                        5%
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="bg-gray-100 h-3 rounded-full overflow-hidden mb-3">
-                                    <div class="bg-red-500 h-full w-[77%] rounded-full relative">
-                                        <div class="absolute inset-0 bg-white/20 w-full rounded-full animate-pulse"></div>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between text-sm font-medium">
-                                    <div class="text-gray-900">Rp. 7.700.000 <span class="text-red-500 ml-1">(77%)</span><br><span class="text-gray-400 font-normal">Digunakan</span></div>
-                                    <div class="text-right text-gray-900">Rp. 2.300.000 <span class="text-secondary ml-1">(23%)</span><br><span class="text-gray-400 font-normal">Tersisa</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Catat & Pantau Keuangan</h3>
-                        <p class="text-gray-500 leading-relaxed">Kamu bisa mencatat pemasukan dan pengeluaran, serta memantau saldo secara real-time dalam satu dashboard interaktif dan responsif.</p>
-                    </div>
-
-                    <!-- Fitur 3: Tanya AI -->
-                    <div class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition flex flex-col justify-between">
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-bold mb-4">Tanya Langsung ke AI</h3>
-                            <p class="text-gray-500 leading-relaxed">Butuh ringkasan bulan ini atau ingin tahu pengeluaran terbesar? Cukup tanya AI Safina kapan saja seperti chat dengan teman.</p>
-                        </div>
-                        <div class="w-full flex items-center justify-center">
-                            <img src="Frame 1464203983.png" alt="AI Chat Interface" class="w-full h-auto object-contain">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="flex-1 flex flex-col gap-8">
-                    <!-- Fitur 2: Atur Budget -->
-                    <div class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition">
-                        <div class="mb-10 w-full flex items-center justify-center">
-                            <img src="Frame 1464203985.png" alt="Budgeting Visualization" class="w-full h-auto object-contain">
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Atur Budget & Target</h3>
-                        <p class="text-gray-500 leading-relaxed">Kelola budget bulanan dan target keuangan agar pengeluaran tetap terkendali dan sesuai rencana dengan visualisasi yang jelas.</p>
-                    </div>
-
-                    <!-- Fitur 4: Kelola Grup -->
-                    <div class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition flex flex-col justify-between">
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-bold mb-4">Kelola Grup Keuangan</h3>
-                            <p class="text-gray-500 leading-relaxed">Membuat grup keuangan bersama keluarga atau kerabat untuk mencatat, memantau, dan mengatur pengeluaran secara bersama.</p>
-                        </div>
-                        <div class="w-full flex items-center justify-center">
-                            <img src="Frame 1464203983 (1).png" alt="Grup Keuangan" class="w-full h-auto object-contain">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fitur 5: Dapatkan Insight (Full Width) -->
-            <div class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                    <div class="md:col-span-5">
-                        <h3 class="text-3xl font-bold mb-4">Dapatkan Insight dari AI</h3>
-                        <p class="text-gray-500 leading-relaxed text-lg">Safina menganalisis data keuanganmu dan memberikan ringkasan, pengingat, serta insight yang mutakhir dan mudah dipahami, langsung dibuat khusus untuk finansialmu.</p>
-                        <a href="#daftar" class="mt-8 inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
-                            Mulai eksplorasi
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                    <div class="md:col-span-7">
-                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-[2rem] p-8 border border-cyan-100 shadow-sm relative overflow-hidden">
-                            <!-- Deco -->
-                            <div class="absolute -right-6 -top-6 w-32 h-32 bg-cyan-100 rounded-full blur-2xl opacity-50 block"></div>
-                            <div class="flex items-start gap-4 mb-6 relative z-10">
-                                <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-2xl shrink-0">✨</div>
-                                <div class="pt-1">
-                                    <h4 class="font-bold text-gray-900 text-lg">Lihat Insight Keuanganmu dari Safina Yuk!</h4>
-                                    <p class="text-sm text-primary font-medium mt-1">Insight otomatis setiap 16:00 WIB</p>
-                                </div>
-                            </div>
-                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100/50">
-                                <p class="text-gray-700 leading-relaxed font-medium">
-                                    Masya Allah, pendapatan kamu bulan ini melonjak drastis! 📈 Tapi, Safina melihat ada peningkatan pengeluaran yang sangat signifikan, terutama pada kategori <span class="font-bold text-red-500">Tagihan</span>, sehingga savings rate kamu menurun drastis dari 24% menjadi hanya 3% 📉. Insya Allah, kita bisa evaluasi lebih lanjut agar keuangan kamu kembali sehat dan berkah. 🤲
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 text-primary text-sm font-semibold mb-6 border border-cyan-100"
+          >
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            Fitur
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Safina Membantu Kamu<br />Mengambil Kendali
+          </h2>
+          <p class="text-gray-500 text-lg leading-relaxed">
+            Dengan bantuan AI, Safina mengubah data keuangan menjadi insight
+            yang mudah dipahami dan bisa langsung kamu gunakan untuk mengambil
+            keputusan.
+          </p>
         </div>
+
+        <!-- Features Masonry Layout: Left 3 items | Right 2 items -->
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Left Column: 3 features -->
+          <div class="flex-1 flex flex-col gap-8">
+            <!-- Fitur 1: Catat & Pantau -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition flex-1"
+            >
+              <!-- Pemasukan & Pengeluaran Cards -->
+              <div class="flex gap-4 mb-4">
+                <div
+                  class="flex-1 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm"
+                >
+                  <div
+                    class="flex items-center gap-2 text-sm text-gray-500 mb-2"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-lg bg-green-50 flex justify-center items-center border-2 border-[#87C054]"
+                    >
+                      <img
+                        src="assets/dollar-symbol-green.svg"
+                        alt="dollar"
+                        class="w-5 h-5"
+                      />
+                    </div>
+                    Pemasukan
+                  </div>
+                  <div class="text-xl font-extrabold text-gray-900">
+                    Rp 10.000.000
+                  </div>
+                  <div
+                    class="text-secondary text-sm font-semibold mt-2 inline-flex items-center gap-1 border-2 border-[#87C054] rounded-2xl px-2 py-0.5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                      ></path>
+                    </svg>
+                    20%
+                  </div>
+                </div>
+                <div
+                  class="flex-1 bg-secondary text-white p-4 rounded-2xl shadow-sm relative overflow-hidden"
+                >
+                  <div
+                    class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-8 translate-x-8"
+                  ></div>
+                  <div
+                    class="flex items-center gap-2 text-sm text-green-100 mb-2 font-medium"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-lg bg-white/20 flex justify-center items-center border-2 border-white/30"
+                    >
+                      <img
+                        src="assets/dollar-symbol.svg"
+                        alt="dollar"
+                        class="w-5 h-5"
+                      />
+                    </div>
+                    Pengeluaran
+                  </div>
+                  <div class="text-xl font-extrabold text-white">
+                    Rp 7.700.000
+                  </div>
+                  <div
+                    class="text-green-100 text-sm font-semibold mt-2 inline-flex items-center gap-1 border-2 border-white/30 rounded-2xl px-2 py-0.5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
+                      ></path>
+                    </svg>
+                    5%
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress Bar Card -->
+              <div
+                class="mb-10 bg-white rounded-2xl p-5 shadow-sm border border-gray-100"
+              >
+                <div class="flex gap-2 mb-4">
+                  <div
+                    class="bg-red-500 h-3 rounded-full"
+                    style="width: 77%"
+                  ></div>
+                  <div
+                    class="bg-secondary h-3 rounded-full"
+                    style="width: 23%"
+                  ></div>
+                </div>
+                <div class="flex justify-between text-sm font-medium">
+                  <div class="text-gray-900">
+                    <span class="font-bold">Rp. 7.700.000</span>
+                    <span class="text-red-500 ml-1">(77%)</span>
+                    <br />
+                    <span class="text-gray-400 font-normal">Digunakan</span>
+                  </div>
+                  <div class="text-right text-gray-900">
+                    <span class="font-bold">Rp. 2.300.000</span>
+                    <span class="text-secondary ml-1">(23%)</span>
+                    <br />
+                    <span class="text-gray-400 font-normal">Tersisa</span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-primary">
+                Catat & Pantau Keuangan
+              </h3>
+              <p class="text-gray-500 text-lg leading-relaxed">
+                Kamu bisa mencatat pemasukan dan pengeluaran, serta memantau
+                saldo secara real-time dalam satu dashboard.
+              </p>
+            </div>
+
+            <!-- Fitur 3: Tanya Langsung ke AI (text left, image right) -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition"
+            >
+              <div class="flex flex-col sm:flex-row items-center gap-8">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-4 text-primary">
+                    Tanya Langsung ke AI
+                  </h3>
+                  <p class="text-gray-500 text-lg leading-relaxed">
+                    Butuh ringkasan bulan ini atau ingin tahu pengeluaran
+                    terbesar? Cukup tanya AI Safina kapan saja.
+                  </p>
+                </div>
+                <div class="flex-1 w-full flex items-center justify-center">
+                  <img
+                    src="Frame 1464203983.png"
+                    alt="AI Chat Interface"
+                    class="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Fitur 4: Kelola Grup (image left, text right) -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition"
+            >
+              <div class="flex flex-col sm:flex-row items-center gap-8">
+                <div class="flex-1 w-full flex items-center justify-center">
+                  <img
+                    src="Frame 1464203983 (1).png"
+                    alt="Grup Keuangan"
+                    class="w-full h-auto object-contain"
+                  />
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-4 text-primary">
+                    Kelola grup
+                  </h3>
+                  <p class="text-gray-500 text-lg leading-relaxed">
+                    Membuat grup keuangan bersama keluarga atau kerabat untuk
+                    mencatat, memantau, dan mengatur pengeluaran secara bersama.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: 2 features -->
+          <div class="flex-1 flex flex-col gap-8">
+            <!-- Fitur 2: Atur Budget & Target (text top, image bottom) -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition flex flex-col"
+            >
+              <h3 class="text-xl font-bold mb-4 text-primary">
+                Atur Budget & Target
+              </h3>
+              <p class="text-gray-500 text-lg leading-relaxed mb-10">
+                Kelola budget bulanan dan target keuangan agar pengeluaran tetap
+                terkendali dan sesuai rencana.
+              </p>
+              <div class="w-full flex items-center justify-center mt-auto">
+                <img
+                  src="Frame 1464203985.png"
+                  alt="Budgeting Visualization"
+                  class="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+
+            <!-- Fitur 5: Dapatkan Insight dari AI -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-10 border border-gray-100 hover:border-gray-200 transition flex flex-col flex-1"
+            >
+              <div
+                class="bg-[#e8f4f8] rounded-[1.5rem] p-4 mb-8 border-2 border-[#ABCAD6]"
+              >
+                <div class="flex items-start gap-3 mb-5">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center shrink-0"
+                  >
+                    <img
+                      src="assets/sparkles.svg"
+                      alt="sparkles"
+                      class="w-8 h-8"
+                    />
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">
+                      Lihat Insight Keuanganmu dari Safina Yuk!
+                    </h4>
+                    <p class="text-sm text-gray-400 font-medium">
+                      Insight otomatis setiap 16:00 WIB
+                    </p>
+                  </div>
+                </div>
+                <div class="rounded-sm">
+                  <p class="text-black leading-relaxed text-sm">
+                    Masya Allah, pendapatan kamu bulan ini melonjak drastis! 📈
+                    Tapi, Safina melihat ada peningkatan pengeluaran yang sangat
+                    signifikan, terutama pada kategori Tagihan, sehingga savings
+                    rate kamu menurun drastis dari 24% menjadi hanya 3% 📉.
+                    Insya Allah, kita bisa evaluasi lebih lanjut agar keuangan
+                    kamu kembali sehat dan berkah. 👌...
+                  </p>
+                </div>
+                <div class="text-center mt-4">
+                  <button
+                    class="text-gray-500 text-sm font-medium inline-flex items-center gap-1 hover:text-gray-700 transition"
+                  >
+                    Selengkapnya
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-primary">
+                Dapatkan Insight dari AI
+              </h3>
+              <p class="text-gray-500 text-lg leading-relaxed">
+                Safina menganalisis data keuanganmu dan memberikan ringkasan,
+                pengingat, serta insight yang mudah dipahami.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Daftar CTA Section (Gradient) -->
-    <section id="daftar" class="py-24 pt-32 bg-primary text-white overflow-hidden relative">
-        <!-- Abstract background shapes -->
-        <div class="absolute inset-0 z-0">
-             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-400/20 to-transparent"></div>
-             <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white opacity-10 blur-3xl"></div>
-             <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-700 opacity-20 blur-[100px]"></div>
-             
-             <!-- Abstract curves from the screenshot -->
-             <div class="absolute top-[20%] left-[-10%] w-[120%] h-[120%] rounded-full border-[80px] border-white/5 blur-sm pointer-events-none"></div>
+    <section id="daftar" class="bg-primary text-white overflow-hidden relative">
+      <!-- Abstract background shapes -->
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-400/20 to-transparent"
+        ></div>
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white opacity-10 blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-700 opacity-20 blur-[100px]"
+        ></div>
+
+        <!-- Abstract curves from the screenshot -->
+        <div
+          class="absolute top-[20%] left-[-10%] w-[120%] h-[120%] rounded-full border-[80px] border-white/5 blur-sm pointer-events-none"
+        ></div>
+      </div>
+
+      <div
+        class="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch relative z-10"
+      >
+        <div
+          class="relative hidden lg:flex items-end justify-center lg:justify-start pe-20 pt-10"
+        >
+          <img
+            src="Group 10.png"
+            alt="Safina App Preview on Multiple Devices"
+            class="w-full h-full object-contain object-bottom drop-shadow-2xl"
+          />
         </div>
-        
-        <div class="container mx-auto px-6 max-w-7xl flex flex-col lg:flex-row-reverse items-center justify-between gap-16 relative z-10">
-            <div class="max-w-xl lg:w-1/2">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-semibold mb-6 backdrop-blur-md border border-white/20">
-                    <span class="w-2 h-2 rounded-full bg-white"></span>
-                    Tetap terhubung
-                </div>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 leading-tight">Coba Safina Sekarang dan Kelola Uangmu Lebih Teratur</h2>
-                
-                <form class="flex flex-col sm:flex-row mt-6 gap-4 w-full">
-                    <input type="email" placeholder="Masukan emailmu" class="flex-1 px-8 py-3.5 rounded-full text-gray-900 bg-white placeholder-gray-400 font-medium text-base focus:outline-none shadow-lg">
-                    <button type="submit" class="bg-secondary hover:bg-[#7abd38] text-white px-8 py-3.5 rounded-full font-bold text-base transition whitespace-nowrap shadow-lg w-full sm:w-auto">
-                        Mulai sekarang
-                    </button>
-                </form>
-            </div>
-            
-            <div class="hidden lg:block lg:w-1/2 relative z-20">
-                 <!-- Group 10 Phones Image -->
-                 <div class="relative w-full max-w-[800px] -mb-40 mt-10 xl:-ml-20">
-                     <img src="Group 10.png" alt="Safina App Preview on Multiple Devices" class="w-full h-auto object-contain drop-shadow-2xl translate-y-16 hover:translate-y-12 transition duration-700 block">
-                 </div>
-            </div>
+
+        <div class="flex flex-col justify-center py-20">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-semibold mb-6 backdrop-blur-md border border-white/20 w-fit"
+          >
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            Daftar
+          </div>
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 leading-tight"
+          >
+            Coba Safina Sekarang dan Kelola Uangmu Lebih Teratur
+          </h2>
+
+          <form class="flex flex-col sm:flex-row mt-6 gap-4 w-full">
+            <input
+              type="email"
+              placeholder="Masukan emailmu"
+              class="flex-1 px-8 py-3.5 rounded-full text-gray-900 bg-white placeholder-gray-400 font-medium text-base focus:outline-none shadow-lg"
+            />
+            <button
+              type="submit"
+              class="bg-secondary hover:bg-[#7abd38] text-white px-8 py-3.5 rounded-full font-bold text-base transition whitespace-nowrap shadow-lg w-full sm:w-auto"
+            >
+              Mulai sekarang
+            </button>
+          </form>
         </div>
+      </div>
     </section>
 
     <!-- Kontak CTA Section -->
     <section class="p-6 bg-white relative z-10">
-        <div class="container mx-auto max-w-7xl">
-            <div class="bg-secondary rounded-[3rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-xl border border-green-400/30">
-                 <!-- Background Image -->
-                 <img src="Frame 1464204005.png" alt="Kontak Background Decor" class="absolute inset-0 w-full h-full object-cover z-0 scale-[1.05]">
-                 
-                 <div class="relative z-10">
-                    <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/20 text-white text-sm font-semibold mb-8 backdrop-blur-sm border border-white/30">
-                        <span class="w-2 h-2 rounded-full bg-white"></span>
-                        Kontak
-                    </div>
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8">Bergabung dengan Safina</h2>
-                    <p class="text-green-50 text-xl max-w-2xl mx-auto mb-12 font-medium">
-                        Kelola budget bulanan dan target keuangan agar pengeluaran tetap terkendali dan sesuai rencana.
-                    </p>
-                    <a href="#kontak" class="inline-block bg-white text-secondary hover:bg-gray-50 px-12 py-5 rounded-full font-bold text-lg transition shadow-xl transform hover:-translate-y-1">
-                        Hubungi Kami
-                    </a>
-                 </div>
+      <div class="container mx-auto max-w-7xl">
+        <div
+          class="bg-secondary rounded-[3rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-xl border border-green-400/30"
+        >
+          <!-- Background Image -->
+          <img
+            src="Frame 1464204005.png"
+            alt="Kontak Background Decor"
+            class="absolute inset-0 w-full h-full object-cover z-0 scale-[1.05]"
+          />
+
+          <div class="relative z-10">
+            <div
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/20 text-white text-sm font-semibold mb-8 backdrop-blur-sm border border-white/30"
+            >
+              <span class="w-2 h-2 rounded-full bg-white"></span>
+              Kontak
             </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8">
+              Bergabung dengan Safina
+            </h2>
+            <p
+              class="text-green-50 text-xl max-w-2xl mx-auto mb-12 font-medium"
+            >
+              Kelola budget bulanan dan target keuangan agar pengeluaran tetap
+              terkendali dan sesuai rencana.
+            </p>
+            <a
+              href="#kontak"
+              class="inline-block bg-white text-secondary hover:bg-gray-50 px-12 py-5 rounded-full font-bold text-lg transition shadow-xl transform hover:-translate-y-1"
+            >
+              Hubungi
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-white pb-12">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="bg-[#0f0f0f] text-[#a1a1aa] py-5 px-8 sm:px-12 rounded-full flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl">
-                <div class="text-xs sm:text-sm font-medium">
-                    © 2026 Safina. Seluruh hak cipta dilindungi.
-                </div>
-                
-                <div class="flex flex-wrap justify-center gap-4 sm:space-x-4 text-xs sm:text-sm font-medium">
-                    <a href="#" class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]">Pengaturan Cookie</a>
-                    <a href="#" class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]">Kebijakan Privasi</a>
-                    <a href="#" class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]">Syarat & Ketentuan</a>
-                </div>
-            </div>
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div
+          class="bg-[#0f0f0f] text-[#a1a1aa] py-5 px-8 sm:px-12 rounded-full flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl"
+        >
+          <div class="text-xs sm:text-sm font-medium">
+            © 2026 Safina. Seluruh hak cipta dilindungi.
+          </div>
+
+          <div
+            class="flex flex-wrap justify-center gap-4 sm:space-x-4 text-xs sm:text-sm font-medium"
+          >
+            <a
+              href="#"
+              class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              >Pengaturan Cookie</a
+            >
+            <a
+              href="#"
+              class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              >Kebijakan Privasi</a
+            >
+            <a
+              href="#"
+              class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              >Syarat & Ketentuan</a
+            >
+          </div>
         </div>
+      </div>
     </footer>
-    
-</body>
+  </body>
 </html>
