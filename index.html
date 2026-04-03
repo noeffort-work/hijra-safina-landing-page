@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,8 +61,8 @@
           <a href="#fitur" class="hover:text-primary transition">Fitur</a>
         </div>
 
-        <!-- CTA Button -->
-        <div>
+        <!-- CTA Button (desktop) -->
+        <div class="hidden md:block">
           <a
             href="#login"
             class="bg-primary hover:bg-opacity-90 text-white px-8 py-2.5 rounded-full font-semibold transition"
@@ -70,7 +70,37 @@
             Login
           </a>
         </div>
+
+        <!-- Hamburger Button (mobile) -->
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 mr-2"
+          aria-label="Toggle menu"
+        >
+          <span id="bar1" class="block w-6 h-0.5 bg-primary transition-all duration-300 origin-center"></span>
+          <span id="bar2" class="block w-6 h-0.5 bg-primary transition-all duration-300 my-1.5"></span>
+          <span id="bar3" class="block w-6 h-0.5 bg-primary transition-all duration-300 origin-center"></span>
+        </button>
       </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden mt-2 bg-[#f0f2f5]/95 backdrop-blur-md rounded-2xl px-6 shadow-sm border border-white/50 flex-col gap-4 font-medium text-gray-700 overflow-hidden transition-all duration-300 ease-out"
+        style="max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0;"
+      >
+        <a href="#tentang" class="block py-2 hover:text-primary transition translate-y-2 opacity-0" style="transition: transform 0.3s ease, opacity 0.3s ease;">Tentang kami</a>
+        <a href="#benefit" class="block py-2 hover:text-primary transition translate-y-2 opacity-0" style="transition: transform 0.3s ease 0.05s, opacity 0.3s ease 0.05s;">Benefit</a>
+        <a href="#fitur" class="block py-2 hover:text-primary transition translate-y-2 opacity-0" style="transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s;">Fitur</a>
+        <hr class="border-gray-300/50 my-2 opacity-0" style="transition: opacity 0.3s ease 0.15s;" />
+        <a
+          href="#login"
+          class="block text-center bg-primary hover:bg-opacity-90 text-white px-8 py-2.5 rounded-full font-semibold transition translate-y-2 opacity-0"
+          style="transition: transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s, background-color 0.2s;"
+        >
+          Login
+        </a>
+      </div>
     </header>
 
     <!-- Hero Section -->
@@ -735,5 +765,57 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // ── Mobile Menu Toggle ──
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      const menuItems = mobileMenu.querySelectorAll('a, hr');
+      let menuOpen = false;
+
+      function openMenu() {
+        menuOpen = true;
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(() => {
+          mobileMenu.style.maxHeight = '400px';
+          mobileMenu.style.opacity = '1';
+          mobileMenu.style.paddingTop = '1.25rem';
+          mobileMenu.style.paddingBottom = '1.25rem';
+          menuItems.forEach(item => {
+            item.classList.remove('translate-y-2');
+            item.classList.add('translate-y-0');
+            item.style.opacity = '1';
+          });
+        });
+        bar1.classList.add('rotate-45', 'translate-y-[8px]');
+        bar2.classList.add('opacity-0');
+        bar3.classList.add('-rotate-45', '-translate-y-[8px]');
+      }
+
+      function closeMenu() {
+        menuOpen = false;
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.paddingTop = '0';
+        mobileMenu.style.paddingBottom = '0';
+        menuItems.forEach(item => {
+          item.classList.add('translate-y-2');
+          item.classList.remove('translate-y-0');
+          item.style.opacity = '0';
+        });
+        setTimeout(() => {
+          if (!menuOpen) mobileMenu.style.display = 'none';
+        }, 300);
+        bar1.classList.remove('rotate-45', 'translate-y-[8px]');
+        bar2.classList.remove('opacity-0');
+        bar3.classList.remove('-rotate-45', '-translate-y-[8px]');
+      }
+
+      menuToggle.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    </script>
   </body>
 </html>
