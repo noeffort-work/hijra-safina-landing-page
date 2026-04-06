@@ -87,7 +87,7 @@
 
     <!-- Hero Section -->
     <main class="pt-24 md:pt-32 pb-0 relative overflow-hidden">
-      <div class="container mx-auto px-6 text-center max-w-5xl relative z-10">
+      <div class="container mx-auto px-6 text-center max-w-5xl relative isolate">
         <!-- Badge -->
         <!--<div
           class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-primary text-xs md:text-sm font-semibold mb-8 border border-cyan-100"
@@ -128,8 +128,8 @@
         <!-- Call to Action -->
         <div class="mb-12">
           <a
-            class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 transform hover:-translate-y-1"
             href="https://app.safinalab.id/"
+            class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 transform hover:-translate-y-1 relative z-20"
           >
             Mulai perjalanan finansialmu
           </a>
@@ -137,7 +137,7 @@
 
         <!-- Hero App Mockup -->
         <div
-          class="relative md:mx-auto md:max-w-3xl lg:max-w-4xl -mt-20 md:-mt-24"
+          class="relative md:mx-auto md:max-w-3xl lg:max-w-4xl -mt-20 md:-mt-24 isolate"
         >
           <!-- Glowing cyan aura -->
           <div
@@ -147,7 +147,7 @@
           <img
             src="assets/hero-mockup.png"
             alt="Safina App Mockup"
-            class="h-auto relative z-10 block drop-shadow-2xl w-[180vw] max-w-none ml-[50%] -translate-x-1/2 md:w-full md:max-w-full md:ml-0 md:translate-x-0"
+            class="h-auto relative block drop-shadow-2xl w-[180vw] max-w-none ml-[50%] -translate-x-1/2 md:w-full md:max-w-full md:ml-0 md:translate-x-0"
           />
         </div>
       </div>
@@ -605,7 +605,7 @@
     <!-- Daftar CTA Section (Gradient) -->
     <section id="daftar" class="bg-primary text-white overflow-hidden relative">
       <!-- Abstract background shapes -->
-      <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0">
         <div
           class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-400/20 to-transparent"
         ></div>
@@ -623,7 +623,7 @@
       </div>
 
       <div
-        class="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch relative z-10"
+        class="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch relative"
       >
         <div
           class="relative hidden lg:flex items-end justify-center lg:justify-start pe-20 pt-10 order-1"
@@ -682,7 +682,7 @@
     </section>
 
     <!-- Bottom CTA Section -->
-    <section class="p-6 bg-white relative z-10">
+    <section class="p-6 bg-white relative">
       <div class="container mx-auto max-w-7xl">
         <div
           class="bg-secondary rounded-xl md:rounded-[3rem] p-8 md:p-24 text-center text-white relative overflow-hidden shadow-xl"
@@ -691,10 +691,10 @@
           <img
             src="assets/bottom-cta-bg.png"
             alt="Bottom CTA Background Decor"
-            class="absolute inset-0 w-full h-full object-cover z-0 scale-[1.05]"
+            class="absolute inset-0 w-full h-full object-cover scale-[1.05]"
           />
 
-          <div class="relative z-10">
+          <div class="relative">
             <h2 class="text-2xl md:text-5xl font-extrabold mb-4 md:mb-8">
               Siap Mengambil Kendali Penuh Atas Keuanganmu?
             </h2>
