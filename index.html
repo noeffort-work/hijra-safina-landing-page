@@ -11,6 +11,7 @@
     />
 
     <script src="side-effects/auto-replace-app-url-href.mjs" type="module"></script>
+    <script src="analytics/tracking.mjs" type="module"></script>
     
     <script>
         // -- START OF POSTHOG INIT --
@@ -151,6 +152,7 @@
           <a
             href="https://app.safinalab.id/"
             class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 transform hover:-translate-y-1 relative z-20"
+            data-track-cta="hero"
           >
             Mulai perjalanan finansialmu
           </a>
@@ -175,7 +177,7 @@
     </main>
 
     <!-- Tentang Kami (Dark Section) -->
-    <section id="tentang" class="bg-dark text-white relative overflow-hidden">
+    <section id="tentang" data-track-section="Tentang Kami" class="bg-dark text-white relative overflow-hidden">
       <div class="block md:hidden">
         <img
           src="assets/tentang-kami-mobile-section-2.jpg"
@@ -233,7 +235,7 @@
     </section>
 
     <!-- Benefit Section -->
-    <section id="benefit" class="py-10 md:py-24 bg-surface">
+    <section id="benefit" data-track-section="Benefit" class="py-10 md:py-24 bg-surface">
       <div class="container mx-auto px-6 max-w-7xl text-center">
         <!-- Badge -->
         <div
@@ -326,7 +328,7 @@
     </section>
 
     <!-- Fitur Section -->
-    <section id="fitur" class="py-10 md:py-24 bg-white relative">
+    <section id="fitur" data-track-section="Fitur" class="py-10 md:py-24 bg-white relative">
       <div class="container mx-auto px-6 max-w-7xl">
         <div class="text-center max-w-3xl mx-auto mb-5 md:mb-20">
           <div
@@ -624,7 +626,7 @@
     </section>
 
     <!-- Daftar CTA Section (Gradient) -->
-    <section id="daftar" class="bg-primary text-white overflow-hidden relative">
+    <section id="daftar" data-track-section="Daftar Email" class="bg-primary text-white overflow-hidden relative">
       <!-- Abstract background shapes -->
       <div class="absolute inset-0">
         <div
@@ -703,7 +705,7 @@
     </section>
 
     <!-- Bottom CTA Section -->
-    <section class="p-6 bg-white relative">
+    <section id="bottom-cta" data-track-section="Bottom CTA" class="p-6 bg-white relative">
       <div class="container mx-auto max-w-7xl">
         <div
           class="bg-secondary rounded-xl md:rounded-[3rem] p-8 md:p-24 text-center text-white relative overflow-hidden shadow-xl"
@@ -729,6 +731,7 @@
             <a
               href="https://app.safinalab.id/"
               class="inline-block bg-white text-secondary hover:bg-gray-50 px-10 py-4 rounded-full font-bold text-lg transition shadow-xl transform hover:-translate-y-1"
+              data-track-cta="bottom"
             >
               Coba SAFINA Sekarang
             </a>
@@ -753,16 +756,19 @@
             <a
               href="#"
               class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              data-track-footer="cookie_settings"
               >Pengaturan Cookie</a
             >
             <a
               href="#"
               class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              data-track-footer="privacy_policy"
               >Kebijakan Privasi</a
             >
             <a
               href="#"
               class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              data-track-footer="terms_conditions"
               >Syarat & Ketentuan</a
             >
           </div>
@@ -843,6 +849,7 @@
         USE_FIREBASE_EMULATORS,
         FIREBASE_EMULATOR_CONFIG,
       } from './config/firebase.mjs';
+      import { track } from './analytics/tracking.mjs';
 
       // ── Firebase Init ──
       const app = initializeApp(CURRENT_FIREBASE_CONFIG);
@@ -906,9 +913,15 @@
 
           input.value = '';
           showToast('Berhasil! Kamu akan mendapat info terbaru dari kami.', 'success');
+          track('email_registered', {
+            email_domain: email.split('@')[1] || 'unknown',
+          });
         } catch (err) {
           console.error('Email registration failed:', err);
           showToast('Gagal mendaftar. Silakan coba lagi.', 'error');
+          track('email_registration_failed', {
+            error_type: err?.code || err?.message || 'unknown',
+          });
         } finally {
           submitBtn.disabled = false;
           submitBtn.textContent = originalBtnText;
