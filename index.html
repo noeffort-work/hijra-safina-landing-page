@@ -1,532 +1,830 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safina - Asisten Keuangan AI untuk Muslim Modern</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Safina is an AI-powered expense tracking app for modern Muslims. Track expenses, get Islamic finance guidance, and manage family budgets." />
+    <script src="side-effects/auto-replace-app-url-href.mjs" type="module"></script>
+    <script src="analytics/tracking.mjs" type="module"></script>
 
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="icon" href="/icon.png" type="image/png" size="480x480">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/manifest.webmanifest">
+    <script>
+        // -- START OF POSTHOG INIT --
 
-  <link href="./output.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-  <title>Safina - AI Expense Tracking for Modern Muslims</title>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init os ds Ie us vs ss ls capture calculateEventProperties register register_once register_for_session unregister unregister_for_session ws getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty bs ps createPersonProfile setInternalOrTestUser ys es $s opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing cs debug M gs getPageViewId captureTraceFeedback captureTraceMetric Qr".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_T0eTVetshekaq8qVZaw6evxQXLeyGGi9gl3ZgIJzUju', {
+            api_host: 'https://us.i.posthog.com',
+            defaults: '2026-01-30',
+        })
 
-  <script type="module" src="./side-effects/auto-replace-analysis-app-href.mjs" defer></script>
-</head>
+        // -- END OF POSTHOG INIT --
 
-<body class="font-inter bg-gray-50">
-  <nav class="sticky top-0 bg-gray-50 z-50">
-    <div class="max-w-7xl mx-auto grid grid-cols-3 items-center px-4 py-4">
-      <img src="./assets/logo/logo-text.png" class="h-10 w-auto" alt="Safina Logo" />
+        const KNOWN_PRODUCTION_HOSTNAMES = ['safinalab.id', 'www.safinalab.id', 'app.safinalab.id']
+        const IS_PRODUCTION = KNOWN_PRODUCTION_HOSTNAMES.includes(window.location.hostname)
+        const env = IS_PRODUCTION ? 'alpha' : 'dev'
 
-      <div class="hidden md:flex items-center justify-center gap-6">
-        <a href="#features"
-          class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
-          data-translate-key="nav_features">Features</a>
-        <a href="#faq"
-          class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
-          data-translate-key="nav_faq">FAQ</a>
-        <a href="#contact"
-          class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
-          data-translate-key="nav_contact">Contact</a>
-      </div>
+        posthog.register({ env })
+    </script>
 
-      <div class="hidden md:flex items-center justify-end gap-2">
-        <div class="relative" id="lang-switcher">
-          <button id="lang-btn" class="flex items-center gap-2 hover:bg-gray-100 rounded-md px-3 py-2">
-            <i data-lucide="globe" class="size-4.5 text-gray-600"></i>
-            <span id="lang-text" class="font-medium text-gray-600">EN</span>
-            <i data-lucide="chevron-down" class="size-3.5 text-gray-600"></i>
-          </button>
-          <div id="lang-menu"
-            class="hidden absolute right-0 mt-2 w-36 bg-white rounded-md shadow-lg border border-gray-100">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English (EN)</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="id">Indonesia
-              (ID)</a>
-          </div>
-        </div>
-
-        <a href="https://app.safinalab.id/"
-          class="bg-brand-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-brand-600"
-          data-translate-key="login_button">
-          Login
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            colors: {
+              primary: "#0e9cb4", // Cyan/Teal based logo feeling
+              secondary: "#8bc540", // Light green
+              dark: "#1a1a1a",
+              surface: "#f8fafc",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="text-gray-800 antialiased bg-white selection:bg-primary selection:text-white"
+  >
+    <!-- Header / Navbar -->
+    <header
+      class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50"
+    >
+      <nav
+        class="bg-[#f0f2f5]/90 backdrop-blur-md rounded-full px-3 py-3 flex justify-between items-center shadow-sm border border-white/50"
+      >
+        <!-- Logo -->
+        <a
+          href="#"
+          class="flex items-center gap-2 text-2xl font-bold text-[#3bd0d6] ml-4"
+        >
+            <img
+                src="assets/logo/logo-text.png"
+                alt="Safina Logo"
+                class="w-auto h-8"
+            />
         </a>
-      </div>
 
-      <button id="menu-btn" class="md:hidden justify-self-end" aria-label="Open menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-
-    <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-4 px-6 py-4 bg-gray-50">
-      <a href="#features" class="text-gray-800" data-translate-key="nav_features_mob">Features</a>
-      <a href="#faq" class="text-gray-800" data-translate-key="nav_faq_mob">FAQ</a>
-      <a href="#contact" class="text-gray-800" data-translate-key="nav_contact_mob">Contact</a>
-      <a href="https://app.safinalab.id/" class="bg-brand-500 text-white text-center px-4 py-2 rounded-md"
-        data-translate-key="login_button_mob">Login</a>
-    </div>
-  </nav>
-
-  <section id="hero" class="px-4 sm:px-6 mt-12 text-center">
-    <div class="max-w-3xl mx-auto space-y-6">
-      <span class="w-fit mx-auto flex bg-brand-50 gap-2 text-brand-600 px-3 py-1 rounded-md font-medium items-center">
-        <i data-lucide="sparkles" class="size-4.5 text-brand-600"></i>
-        <span data-translate-key="hero_badge">AI Powered</span>
-      </span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight tracking-tighter">
-        <span data-translate-key="hero_title_part1">AI-powered expense tracking for</span>
-        <span class="bg-brand-100 text-brand-600 px-2 rounded-lg leading-tight font-semibold">
-          <span id="typing-effect"></span><span class="blinking-cursor">|</span>
-        </span>
-        <span data-translate-key="hero_title_part2"></span>
-      </h1>
-      <p class="text-gray-600 text-base sm:text-lg" data-translate-key="hero_subtitle">
-        Track your daily expenses with AI, get Islamic finance guidance, and manage family budgets all in one app. Log
-        transactions via WhatsApp or directly in the app.
-      </p>
-      <a href="https://app.safinalab.id/"
-        class="inline-block bg-brand-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-brand-600"
-        data-translate-key="hero_cta">
-        Get Started
-      </a>
-
-      <div class="mt-10 h-150 overflow-hidden">
-        <img src="./assets/chat.png" alt="Safina Chat" class="mx-auto rounded-xl shadow" />
-      </div>
-    </div>
-  </section>
-
-  <section id="features" class="py-12">
-    <div class="max-w-6xl mx-auto text-center space-y-6">
-      <span class="w-fit mx-auto flex bg-brand-50 gap-2 text-brand-600 px-3 py-1 rounded-md font-medium items-center">
-        <i data-lucide="pencil-ruler" class="size-4.5 text-brand-600"></i>
-        <span data-translate-key="features_badge">Features</span>
-      </span>
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tighter">
-        <span data-translate-key="features_title_part1">Everything you need <br />
-          to manage your
-        </span>
-        <span class="bg-brand-100 text-brand-600 px-2 rounded-lg font-semibold">
-          <span id="typing-effect-features"></span><span class="blinking-cursor">|</span>
-        </span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto" data-translate-key="features_subtitle">
-        From AI-powered tracking to Islamic finance guidance, every feature is built to help you manage your finances
-        wisely.
-      </p>
-    </div>
-    <div class="mt-12 mx-auto max-w-6xl px-4">
-      <div class="flex flex-col-reverse md:flex-row gap-8 items-start">
-        <div class="w-full">
-          <ul class="space-y-3">
-            <li class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
-              data-image="/assets/input-via-chat.png" role="button" tabindex="0" aria-selected="true">
-              <div class="shrink-0 self-start">
-                <i data-lucide="sparkles" class="icon size-7.5 text-brand-800"></i>
-              </div>
-              <div class="flex-1">
-                <div class="title text-lg font-semibold" data-translate-key="feature_ai_title">AI Expense Tracking</div>
-                <p class="desc mt-2 text-gray-600" data-translate-key="feature_ai_desc">
-                  Let AI categorize and analyze your transactions. Scan receipts, auto-categorize expenses, and get
-                  smart spending insights.
-                </p>
-              </div>
-            </li>
-            <li class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
-              data-image="/assets/insight-safina.png" role="button" tabindex="0" aria-selected="false">
-              <div class="shrink-0 self-start">
-                <i data-lucide="heart-handshake" class="icon size-7.5 text-brand-800"></i>
-              </div>
-              <div class="flex-1">
-                <div class="title text-lg" data-translate-key="feature_islamic_title">Islamic Finance Guidance</div>
-                <p class="desc mt-2 text-gray-600" data-translate-key="feature_islamic_desc">
-                  Receive Shariah-compliant financial recommendations to help your spending align with Islamic
-                  principles.
-                </p>
-              </div>
-            </li>
-            <li class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
-              data-image="/assets/whatsapp-integration.png" role="button" tabindex="0" aria-selected="false">
-              <div class="shrink-0 self-start">
-                <i data-lucide="message-circle-more" class="icon size-7.5 text-brand-800"></i>
-              </div>
-              <div class="flex-1">
-                <div class="title text-lg" data-translate-key="feature_whatsapp_title">WhatsApp Integration</div>
-                <p class="desc mt-2 text-gray-600" data-translate-key="feature_whatsapp_desc">
-                  Log transactions by simply sending a message to your WhatsApp group. Quick, easy, and accessible.
-                </p>
-              </div>
-            </li>
-            <li class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
-              data-image="/assets/whatsapp-group.png" role="button" tabindex="0" aria-selected="false">
-              <div class="shrink-0 self-start">
-                <i data-lucide="users" class="icon size-7.5 text-brand-800"></i>
-              </div>
-              <div class="flex-1">
-                <div class="title text-lg" data-translate-key="feature_group_title">Group & Family Tracking</div>
-                <p class="desc mt-2 text-gray-600" data-translate-key="feature_group_desc">
-                  Collaborate with family members to track household expenses. Everyone stays informed with shared
-                  spending reports.
-                </p>
-              </div>
-            </li>
-          </ul>
+        <!-- Navigation Links -->
+        <div
+          class="hidden md:flex space-x-10 font-medium text-gray-700 mr-4"
+        >
+          <a href="#tentang" class="hover:text-primary transition"
+            >Tentang kami</a
+          >
+          <a href="#fitur" class="hover:text-primary transition">Fitur</a>
         </div>
 
-        <div class="w-full p-1.5 bg-gray-100 rounded-xl">
-          <img id="featureImage" src="/assets/aisummary.png" alt="Feature preview"
-            class="max-h-full w-full object-contain transition-opacity duration-300" />
+        <!-- Hamburger Button (mobile) -->
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 mr-2"
+          aria-label="Toggle menu"
+        >
+          <span id="bar1" class="block w-6 h-0.5 bg-primary transition-all duration-300 origin-center"></span>
+          <span id="bar2" class="block w-6 h-0.5 bg-primary transition-all duration-300 my-1.5"></span>
+          <span id="bar3" class="block w-6 h-0.5 bg-primary transition-all duration-300 origin-center"></span>
+        </button>
+      </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden mt-2 bg-[#f0f2f5]/95 backdrop-blur-md rounded-2xl px-6 shadow-sm border border-white/50 flex-col gap-4 font-medium text-gray-700 overflow-hidden transition-all duration-300 ease-out"
+        style="max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0;"
+      >
+        <a href="#tentang" class="block py-2 hover:text-primary transition translate-y-2 opacity-0" style="transition: transform 0.3s ease, opacity 0.3s ease;">Tentang kami</a>
+        <a href="#fitur" class="block py-2 hover:text-primary transition translate-y-2 opacity-0" style="transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s;">Fitur</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="pt-24 md:pt-32 pb-0 relative overflow-hidden">
+      <div class="container mx-auto px-6 text-center max-w-5xl relative isolate">
+        <!-- Badge -->
+        <!--<div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-primary text-xs md:text-sm font-semibold mb-8 border border-cyan-100"
+        >
+          <span class="w-2 h-2 rounded-full bg-primary relative flex">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+            ></span>
+          </span>
+          Asisten Keuangan AI untuk Muslim Modern
+        </div>-->
+
+        <!-- Headlines -->
+        <h1
+          class="text-3xl md:text-6xl font-extrabold text-gray-900 my-6 leading-[1.20]"
+        >
+          <!--Kelola Keuangan Lebih Cerdas<br class="hidden md:block" /><br
+            class="md:hidden"
+          />
+          Hidup Lebih<br class="md:hidden" />
+          Berkah-->
+
+          Kelola Keuangan<br class="block md:hidden""> Lebih Satset<br />
+          Hidup Lebih Simpel
+        </h1>
+        <p
+          class="text-sm md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed"
+        >
+            Bingung mulai ngatur keuangan dari mana?<br />SAFINA bantu kamu lihat kondisi kamu sekarang,<br />terus kasih langkah yang bisa langsung kamu jalanin.
+        </p>
+
+        <!-- Call to Action -->
+        <div class="mb-12">
+          <a
+            href="https://app.safinalab.id/"
+            class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 transform hover:-translate-y-1 relative z-20"
+            data-track-cta="hero"
+          >
+            Mulai sekarang
+          </a>
+        </div>
+
+        <!-- Hero App Mockup -->
+        <div
+          class="relative md:mx-auto md:max-w-3xl lg:max-w-4xl -mt-20 md:-mt-24 isolate"
+        >
+          <!-- Glowing cyan aura -->
+          <div
+            class="absolute top-[210%] md:top-[160%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1800px] h-[1200px] bg-[#0e9cb4] opacity-100 blur-[100px] rounded-full -z-10 pointer-events-none"
+          ></div>
+
+          <img
+            src="assets/hero-mockup.png"
+            alt="Safina App Mockup"
+            class="h-auto relative block drop-shadow-2xl w-[180vw] max-w-none ml-[50%] -translate-x-1/2 md:w-full md:max-w-full md:ml-0 md:translate-x-0"
+          />
         </div>
       </div>
-    </div>
-  </section>
+    </main>
 
-  <section id="faq" class="px-4 sm:px-6 py-20 bg-gray-50">
-    <div class="max-w-5xl mx-auto text-center space-y-6">
-      <span class="w-fit mx-auto flex bg-brand-50 gap-2 text-brand-600 px-3 py-1 rounded-md font-medium items-center">
-        <i data-lucide="circle-question-mark" class="size-4.5 text-brand-600"></i>
-        <span data-translate-key="faq_badge">FAQ</span>
-      </span>
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tighter" data-translate-key="faq_title">
-        Frequently Asked Questions
-      </h2>
-      <p class="text-gray-600" data-translate-key="faq_subtitle">
-        Quick answers to help you get started with Safina.
-      </p>
-    </div>
-
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
-      <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
-        <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
-          <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q1">
-            How does AI expense tracking work?
+    <!-- Tentang Kami (Dark Section) -->
+    <section id="tentang" data-track-section="Tentang Kami" class="bg-dark text-white relative overflow-hidden">
+      <div class="block md:hidden">
+        <img
+          src="assets/tentang-kami-mobile-section.png"
+          alt="Tentang Kami Mobile Section"
+          class="w-full h-auto block"
+        />
+      </div>
+      <div
+        class="container mx-auto px-6 max-w-7xl lg:grid lg:grid-cols-2 gap-0 lg:items-stretch hidden md:grid"
+      >
+        <div
+          class="pt-20 pb-16 lg:py-20 lg:flex lg:flex-col lg:justify-center relative"
+        >
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-gray-400 text-sm font-medium mb-4 border border-white/5 w-fit"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+            Tentang kami
           </div>
-          <i data-lucide="chevron-down" class="arrow size-3.5 text-brand-600"></i>
+          <!-- Invisible float spacer with shape-outside for diagonal text wrapping -->
+          <span
+            class="float-right w-[50%] h-[360px] ml-3 -mr-6 lg:hidden"
+            style="
+              shape-outside: polygon(40% 0%, 100% 0%, 100% 100%, 10% 100%);
+              shape-margin: 14px;
+            "
+            aria-hidden="true"
+          ></span>
+          <h2
+            class="text-sm md:text-5xl font-bold mb-5 leading-tight"
+          >
+            Safina Bantu Kamu<br />Ambil Kendali Penuh
+          </h2>
+          <p class="text-xs md:text-base text-gray-400 leading-relaxed">
+              Kami percaya, setiap rupiah itu punya arti.<br />
+              Bukan cuma dicatat, tapi dipahami.<br />
+              SAFINA bantu kamu lihat kondisi keuanganmu dengan lebih jelas,<br />
+              dan ambil keputusan yang lebih tenang, lebih terarah.
+          </p>
+          <div class="clear-both lg:hidden"></div>
         </div>
-        <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a1">
-          Our AI automatically categorizes your transactions, scans receipts, and provides spending insights. Just log
-          your expenses via the app or WhatsApp, and the AI handles the rest.
-        </p>
+
+        <div class="relative hidden lg:flex items-end justify-end">
+          <!-- iPhone Mockup - Desktop -->
+          <img
+            src="assets/half-phone-mockup.png"
+            alt="Safina App Preview"
+            class="w-full h-full object-contain object-bottom drop-shadow-2xl"
+          />
+        </div>
       </div>
-      <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
-        <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
-          <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q2">
-            What is Islamic finance guidance?
+    </section>
+
+    <!-- Fitur Section -->
+    <section id="fitur" data-track-section="Fitur" class="py-10 md:py-24 bg-white relative">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-5 md:mb-20">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 text-primary text-sm font-semibold mb-6 border border-cyan-100"
+          >
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            Fitur
           </div>
-          <i data-lucide="chevron-down" class="arrow size-3.5 text-brand-600"></i>
+          <h2 class="text-2xl md:text-5xl font-bold mb-6 leading-tight">
+            Wujudkan Strategi Finansialmu
+            <br />dengan Fitur Cerdas SAFINA
+          </h2>
         </div>
-        <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a2">
-          Safina provides Shariah-compliant recommendations for your expenses, helping you make financial decisions that
-          align with Islamic principles.
-        </p>
-      </div>
-      <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
-        <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
-          <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q3">
-            How does WhatsApp integration work?
+
+        <!-- Features Masonry Layout: Left 3 items | Right 2 items -->
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Left Column: 3 features -->
+          <div class="flex-1 flex flex-col gap-8">
+            <!-- Fitur 1: Catat & Pantau -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-4 pb-8 md:p-10 border border-gray-100 hover:border-gray-200 transition flex-1"
+            >
+              <!-- Pemasukan & Pengeluaran Cards -->
+              <div class="flex gap-4 mb-4">
+                <div
+                  class="flex-1 bg-white p-4 rounded-3xl md:rounded-2xl border border-gray-100 shadow-sm"
+                >
+                  <div
+                    class="flex items-center gap-2 text-xs md:text-sm text-gray-500 mb-2"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-lg bg-green-50 flex justify-center items-center border-2 border-[#87C054]"
+                    >
+                      <img
+                        src="assets/dollar-symbol-green.svg"
+                        alt="dollar"
+                        class="w-5 h-5"
+                      />
+                    </div>
+                    Pemasukan
+                  </div>
+                  <div class="text-sm md:text-xl font-extrabold text-gray-900">
+                    Rp 10.000.000
+                  </div>
+                  <div
+                    class="text-secondary text-sm font-semibold mt-2 inline-flex items-center gap-1 border-2 border-[#87C054] rounded-2xl px-2 py-0.5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                      ></path>
+                    </svg>
+                    20%
+                  </div>
+                </div>
+                <div
+                  class="flex-1 bg-secondary text-white p-4 rounded-3xl md:rounded-2xl shadow-sm relative overflow-hidden"
+                >
+                  <div
+                    class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-8 translate-x-8"
+                  ></div>
+                  <div
+                    class="flex items-center gap-2 text-xs md:text-sm text-green-100 mb-2 font-medium"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-lg bg-white/20 flex justify-center items-center border-2 border-white/30"
+                    >
+                      <img
+                        src="assets/dollar-symbol.svg"
+                        alt="dollar"
+                        class="w-5 h-5"
+                      />
+                    </div>
+                    Pengeluaran
+                  </div>
+                  <div class="text-sm md:text-xl font-extrabold text-white">
+                    Rp 7.700.000
+                  </div>
+                  <div
+                    class="text-green-100 text-sm font-semibold mt-2 inline-flex items-center gap-1 border-2 border-white/30 rounded-2xl px-2 py-0.5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
+                      ></path>
+                    </svg>
+                    5%
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress Bar Card -->
+              <div
+                class="mb-10 bg-white rounded-2xl p-5 shadow-sm border border-gray-100"
+              >
+                <div class="flex gap-2 mb-4">
+                  <div
+                    class="bg-red-500 h-3 rounded-full"
+                    style="width: 77%"
+                  ></div>
+                  <div
+                    class="bg-secondary h-3 rounded-full"
+                    style="width: 23%"
+                  ></div>
+                </div>
+                <div class="flex justify-between text-xs md:text-sm font-medium">
+                  <div class="text-gray-900">
+                    <span class="font-bold">Rp. 7.700.000</span>
+                    <span class="text-red-500 ml-1">(77%)</span>
+                    <br />
+                    <span class="text-gray-400 font-normal">Digunakan</span>
+                  </div>
+                  <div class="text-right text-gray-900">
+                    <span class="font-bold">Rp. 2.300.000</span>
+                    <span class="text-secondary ml-1">(23%)</span>
+                    <br />
+                    <span class="text-gray-400 font-normal">Tersisa</span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-primary">
+                Catat Kilat via WhatsApp,
+                <br />Pantau Real-Time di Website
+              </h3>
+              <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                Catat transaksi secepat kirim pesan melalui teks, foto struk,
+                atau voice note di WhatsApp. Data otomatis terinput dan siap
+                kamu pantau secara real-time di halaman ringkasan yang rapi dan
+                transparan.
+              </p>
+            </div>
+
+            <!-- Fitur 3: Tanya Langsung ke AI (text left, image right) -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-4 py-6 md:p-10 border border-gray-100 hover:border-gray-200 transition"
+            >
+              <div class="flex flex-row items-center gap-4 md:gap-8">
+                <div class="flex-1">
+                  <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-4 text-primary">
+                    Diskusi Cerdas dengan Sahabat AI
+                  </h3>
+                  <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                    Butuh ringkasan belanja atau diskusi wawasan keuangan
+                    Syariah? Tanya AI Safina kapan saja via chat. Dapatkan
+                    analisis mendalam dan saran hemat personal layaknya asisten
+                    pribadi.
+                  </p>
+                </div>
+                <div class="w-1/2 md:flex-1 flex-shrink-0 flex items-center justify-center">
+                  <img
+                    src="assets/feature-3.png"
+                    alt="AI Chat Interface"
+                    class="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Fitur 4: Kelola Grup (image left, text right) -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-4 py-6 md:p-10 border border-gray-100 hover:border-gray-200 transition"
+            >
+              <div class="flex flex-row items-center gap-4 md:gap-8">
+                <div class="w-1/2 md:flex-1 flex-shrink-0 flex items-center justify-center">
+                  <img
+                    src="assets/feature-4.png"
+                    alt="Grup Keuangan"
+                    class="w-full h-auto object-contain"
+                  />
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-4 text-primary">
+                    Keuangan Bersama Jadi Lebih Transparan
+                  </h3>
+                  <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                    Buat grup keuangan bersama keluarga atau kerabat untuk
+                    mencatat pengeluaran kolektif. Pastikan rencana belanja grup
+                    tetap terorganisir dan dapat dipantau dengan jelas oleh
+                    semua anggota.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <i data-lucide="chevron-down" class="arrow size-3.5 text-brand-600"></i>
-        </div>
-        <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a3">
-          You can log transactions by sending messages to your connected WhatsApp group. Simply type your expense, and
-          Safina's AI will parse and record it automatically.
-        </p>
-      </div>
-      <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
-        <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
-          <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q4">
-            Can I track expenses with my family?
+
+          <!-- Right Column: 2 features -->
+          <div class="flex-1 flex flex-col gap-8">
+            <!-- Fitur 2: Atur Budget & Target (text top, image bottom) -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-4 py-6 md:p-10 border border-gray-100 hover:border-gray-200 transition flex flex-col"
+            >
+              <h3 class="text-xl font-bold mb-4 text-primary order-2 md:order-1">
+                Rencanakan Budget & Kejar Impianmu
+              </h3>
+              <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-0 md:mb-10 order-3 md:order-2">
+                Susun alokasi budget bulanan yang realistis bersama asisten AI.
+                Pantau progres target keuangan, dari dana darurat hingga
+                tabungan impian, agar setiap pengeluaran terkendali sesuai
+                rencana.
+              </p>
+              <div class="w-full flex items-center justify-center mt-auto mb-4 md:mb-0 order-1 md:order-3">
+                <img
+                  src="assets/feature-2.png"
+                  alt="Budgeting Visualization"
+                  class="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+
+            <!-- Fitur 5: Dapatkan Insight dari AI -->
+            <div
+              class="bg-surface rounded-[2.5rem] p-4 py-6 md:p-10 border border-gray-100 hover:border-gray-200 transition flex flex-col flex-1"
+            >
+              <div
+                class="bg-[#e8f4f8] rounded-[1.5rem] p-4 mb-4 md:mb-8 border-2 border-[#ABCAD6]"
+              >
+                <div class="flex items-start gap-3 mb-5">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center shrink-0"
+                  >
+                    <img
+                      src="assets/sparkles.svg"
+                      alt="sparkles"
+                      class="w-8 h-8"
+                    />
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">
+                      Lihat Insight Keuanganmu dari Safina Yuk!
+                    </h4>
+                    <p class="text-sm text-gray-400 font-medium">
+                      Insight otomatis setiap 16:00 WIB
+                    </p>
+                  </div>
+                </div>
+                <div class="rounded-sm">
+                  <p class="text-black leading-relaxed text-sm">
+                    Masya Allah, pendapatan kamu bulan ini melonjak drastis! 📈
+                    Tapi, Safina melihat ada peningkatan pengeluaran yang sangat
+                    signifikan, terutama pada kategori Tagihan, sehingga savings
+                    rate kamu menurun drastis dari 24% menjadi hanya 3% 📉.
+                    Insya Allah, kita bisa evaluasi lebih lanjut agar keuangan
+                    kamu kembali sehat dan berkah. 👌...
+                  </p>
+                </div>
+                <div class="text-center mt-4">
+                  <button
+                    class="text-gray-500 text-sm font-medium inline-flex items-center gap-1 hover:text-gray-700 transition"
+                  >
+                    Selengkapnya
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-primary">
+                Evaluasi Otomatis untuk Hidup Berkah
+              </h3>
+              <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                Terima analisis otomatis setiap jam 16:00 WIB berupa ringkasan
+                dan insight mendalam. SAFINA membantumu mengevaluasi pengeluaran
+                harian agar kondisi keuangan tetap sehat, tenang, dan berkah.
+              </p>
+            </div>
           </div>
-          <i data-lucide="chevron-down" class="arrow size-3.5 text-brand-600"></i>
         </div>
-        <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a4">
-          Yes! Create a shared group to track household expenses together. Family members can log transactions and view
-          shared spending reports.
-        </p>
       </div>
-      <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
-        <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
-          <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q5">
-            Is my financial data secure?
+    </section>
+
+    <!-- Daftar CTA Section (Gradient) -->
+    <section id="daftar" data-track-section="Daftar Email" class="bg-primary text-white overflow-hidden relative">
+      <!-- Abstract background shapes -->
+      <div class="absolute inset-0">
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-400/20 to-transparent"
+        ></div>
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white opacity-10 blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-700 opacity-20 blur-[100px]"
+        ></div>
+
+        <!-- Abstract curves from the screenshot -->
+        <div
+          class="absolute top-[20%] left-[-10%] w-[120%] h-[120%] rounded-full border-[80px] border-white/5 blur-sm pointer-events-none"
+        ></div>
+      </div>
+
+      <div
+        class="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch relative"
+      >
+        <div
+          class="relative hidden lg:flex items-end justify-center lg:justify-start pe-20 pt-10 order-1"
+        >
+          <img
+            src="assets/screens-mockup.png"
+            alt="Safina App Preview on Multiple Devices"
+            class="w-full h-full object-contain object-bottom drop-shadow-2xl"
+          />
+        </div>
+
+        <div class="flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-10 md:py-20 order-1 lg:order-2">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-semibold mb-6 backdrop-blur-md border border-white/20 w-fit"
+          >
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            Tetap terhubung
           </div>
-          <i data-lucide="chevron-down" class="arrow size-3.5 text-brand-600"></i>
+          <h2
+            class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight"
+          >
+            Mari Tumbuh Bersama SAFINA
+          </h2>
+          <p class="text-white/70 mb-8 text-sm md:text-base leading-relaxed">
+            Jadilah yang pertama tahu info fitur terbaru dan tips finansial
+            Syariah langsung di emailmu.
+          </p>
+
+          <form id="email-registration-form" class="flex flex-row gap-3 w-full">
+            <input
+              id="email-registration-input"
+              type="email"
+              placeholder="Masukkan alamat email..."
+              class="flex-1 min-w-0 px-5 md:px-8 py-3.5 rounded-full text-gray-900 bg-white placeholder-gray-400 font-medium text-sm md:text-base focus:outline-none shadow-lg"
+            />
+            <button
+              type="submit"
+              class="bg-secondary hover:bg-[#7abd38] text-white px-5 md:px-8 py-3.5 rounded-full font-bold text-sm md:text-base transition whitespace-nowrap shadow-lg shrink-0"
+            >
+              Update Saya!
+            </button>
+          </form>
         </div>
-        <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a5">
-          Absolutely. All your data is encrypted and stored securely. Only you and authorized family members can access
-          your information.
-        </p>
+
+        <!-- Mobile-only phone mockup image -->
+        <div
+          class="relative flex lg:hidden items-start justify-center order-3 h-[200px]"
+        >
+          <img
+            src="assets/screens-mockup.png"
+            alt="Safina App Preview on Multiple Devices"
+            class="w-[125%] max-w-none object-contain object-top drop-shadow-2xl"
+          />
+        </div>
       </div>
-      <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
-        <div class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header">
-          <div class="heading text-xl tracking-tight font-semibold w-full" data-translate-key="faq_q6">
-            What languages does Safina support?
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section id="bottom-cta" data-track-section="Bottom CTA" class="p-6 bg-white relative">
+      <div class="container mx-auto max-w-7xl">
+        <div
+          class="bg-secondary rounded-xl md:rounded-[3rem] p-8 md:p-24 text-center text-white relative overflow-hidden shadow-xl"
+        >
+          <!-- Background Image -->
+          <img
+            src="assets/bottom-cta-bg.png"
+            alt="Bottom CTA Background Decor"
+            class="absolute inset-0 w-full h-full object-cover scale-[1.05]"
+          />
+
+          <div class="relative">
+            <h2 class="text-2xl md:text-5xl font-extrabold mb-4 md:mb-8">
+                Mulai langkah kecil hari ini!
+            </h2>
+            <p
+              class="text-green-50 text-md md:text-xl max-w-2xl mx-auto mb-6 md:mb-12 font-medium"
+            >
+                Nggak perlu nunggu siap. Mulai aja dulu, SAFINA temenin kamu.
+            </p>
+            <a
+              href="https://app.safinalab.id/"
+              class="inline-block bg-white text-secondary hover:bg-gray-50 px-10 py-4 rounded-full font-bold text-lg transition shadow-xl transform hover:-translate-y-1"
+              data-track-cta="bottom"
+            >
+              Coba SAFINA Sekarang
+            </a>
           </div>
-          <i data-lucide="chevron-down" class="arrow size-3.5 text-brand-600"></i>
         </div>
-        <p class="answer p-3 text-sm text-gray-600 hidden" data-translate-key="faq_a6">
-          Safina fully supports both English and Bahasa Indonesia, including AI categorization in both languages.
-        </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer id="contact" class="bg-brand-500 bg-center bg-no-repeat text-white py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="space-y-2 text-center md:text-left">
-        <img src="./assets/logo/logo-text.png" alt="Safina Logo" class="h-10 w-auto brightness-0 invert">
-        <p class="text-4xl tracking-tighter font-light">
-          contact@safinalab.id
-        </p>
-        <p class="mt-10 text-gray-200" data-translate-key="footer_copyright">
-          © 2025 <a href="/" class="underline">safinalab.id</a> All Rights Reserved
-        </p>
+    <!-- Footer -->
+    <footer class="bg-white pb-12">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div
+          class="bg-[#0f0f0f] text-[#a1a1aa] py-5 px-8 sm:px-12 rounded-xl md:rounded-full flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl"
+        >
+          <div class="text-xs sm:text-sm font-medium">
+            © 2026 Safina. Seluruh hak cipta dilindungi.
+          </div>
+
+          <div
+            class="flex flex-wrap justify-center gap-4 sm:space-x-4 text-[8px] md:text-xs sm:text-sm font-medium"
+          >
+            <a
+              href="#"
+              class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              data-track-footer="cookie_settings"
+              >Pengaturan Cookie</a
+            >
+            <a
+              href="#"
+              class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              data-track-footer="privacy_policy"
+              >Kebijakan Privasi</a
+            >
+            <a
+              href="#"
+              class="hover:text-white transition underline underline-offset-2 decoration-[#52525b]"
+              data-track-footer="terms_conditions"
+              >Syarat & Ketentuan</a
+            >
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const menu = document.getElementById("mobile-menu");
+    <script>
+      // ── Mobile Menu Toggle ──
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      const menuItems = mobileMenu.querySelectorAll('a, hr');
+      let menuOpen = false;
 
-    menuBtn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  </script>
-  <script>
-    const accordionHeaders = document.querySelectorAll(".accordion-header");
+      function openMenu() {
+        menuOpen = true;
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(() => {
+          mobileMenu.style.maxHeight = '400px';
+          mobileMenu.style.opacity = '1';
+          mobileMenu.style.paddingTop = '1.25rem';
+          mobileMenu.style.paddingBottom = '1.25rem';
+          menuItems.forEach(item => {
+            item.classList.remove('translate-y-2');
+            item.classList.add('translate-y-0');
+            item.style.opacity = '1';
+          });
+        });
+        bar1.classList.add('rotate-45', 'translate-y-[8px]');
+        bar2.classList.add('opacity-0');
+        bar3.classList.add('-rotate-45', '-translate-y-[8px]');
+      }
 
-    accordionHeaders.forEach((header) => {
-      header.addEventListener("click", () => {
-        const answer = header.nextElementSibling;
-        const arrow = header.querySelector(".arrow");
-        answer.classList.toggle("hidden");
-        arrow.classList.toggle("rotate-180");
-      });
-    });
-  </script>
-  <script>
-    const featureItems = document.querySelectorAll(".feature-item");
-    const featureImg = document.getElementById("featureImage");
+      function closeMenu() {
+        menuOpen = false;
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.paddingTop = '0';
+        mobileMenu.style.paddingBottom = '0';
+        menuItems.forEach(item => {
+          item.classList.add('translate-y-2');
+          item.classList.remove('translate-y-0');
+          item.style.opacity = '0';
+        });
+        setTimeout(() => {
+          if (!menuOpen) mobileMenu.style.display = 'none';
+        }, 300);
+        bar1.classList.remove('rotate-45', 'translate-y-[8px]');
+        bar2.classList.remove('opacity-0');
+        bar3.classList.remove('-rotate-45', '-translate-y-[8px]');
+      }
 
-    function activateFeature(item) {
-      featureItems.forEach((i) => {
-        i.classList.remove("bg-gray-100");
-        i.setAttribute("aria-selected", "false");
-        const d = i.querySelector(".desc");
-        if (d) d.classList.add("hidden");
-        const t = i.querySelector(".title");
-        if (t) t.classList.remove("font-semibold", "text-gray-800"), t.classList.add("text-gray-400");
-        const ic = i.querySelector(".icon");
-        if (ic) ic.classList.remove("text-gray-800"), ic.classList.add("text-gray-400");
-      });
+      menuToggle.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    </script>
 
-      item.classList.add("bg-gray-100");
-      item.setAttribute("aria-selected", "true");
-      const desc = item.querySelector(".desc");
-      if (desc) desc.classList.remove("hidden");
-      const title = item.querySelector(".title");
-      if (title) title.classList.add("font-semibold", "text-gray-800"), title.classList.remove("text-gray-400");
-      const icon = item.querySelector(".icon");
-      if (icon) icon.classList.add("text-gray-800"), icon.classList.remove("text-gray-400");
+    <!-- Toast Notification Container -->
+    <div
+      id="toast-container"
+      aria-live="polite"
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-2 pointer-events-none"
+    ></div>
 
-      const newSrc = item.dataset.image;
-      if (!newSrc) return;
-      featureImg.classList.add("opacity-0");
-      setTimeout(() => {
-        featureImg.src = newSrc;
-        featureImg.classList.remove("opacity-0");
-      }, 150);
-    }
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+      import {
+        getFirestore,
+        connectFirestoreEmulator,
+        doc,
+        setDoc,
+        serverTimestamp,
+      } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+      import {
+        CURRENT_FIREBASE_CONFIG,
+        USE_FIREBASE_EMULATORS,
+        FIREBASE_EMULATOR_CONFIG,
+      } from './config/firebase.mjs';
+      import { track } from './analytics/tracking.mjs';
 
-    featureItems.forEach((item) => {
-      item.addEventListener("click", () => activateFeature(item));
-      item.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          activateFeature(item);
+      // ── Firebase Init ──
+      const app = initializeApp(CURRENT_FIREBASE_CONFIG);
+      const db = getFirestore(app);
+
+      if (USE_FIREBASE_EMULATORS) {
+        connectFirestoreEmulator(db, FIREBASE_EMULATOR_CONFIG.host, FIREBASE_EMULATOR_CONFIG.firestorePort);
+      }
+
+      // ── Toast ──
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const bgClass = type === 'success' ? 'bg-[#8bc540]' : 'bg-red-500';
+
+        const iconSvg = type === 'success'
+          ? '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>'
+          : '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>';
+
+        const toast = document.createElement('div');
+        toast.className = `flex items-center gap-3 px-5 py-3.5 rounded-full shadow-xl text-sm font-semibold text-white pointer-events-auto transition-all duration-300 opacity-0 translate-y-2 ${bgClass}`;
+        toast.innerHTML = `${iconSvg}<span>${message}</span>`;
+
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            toast.classList.remove('opacity-0', 'translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+          });
+        });
+
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'translate-y-0');
+          toast.classList.add('opacity-0', 'translate-y-2');
+          toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+        }, 4000);
+      }
+
+      // ── Email Registration Form ──
+      const form = document.getElementById('email-registration-form');
+      const input = document.getElementById('email-registration-input');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent.trim();
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = input.value.trim();
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Memproses...';
+        submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+        try {
+          await setDoc(
+            doc(db, 'email_registrations', email),
+            { email, registeredAt: serverTimestamp() },
+            { merge: true },
+          );
+
+          input.value = '';
+          showToast('Berhasil! Kamu akan mendapat info terbaru dari kami.', 'success');
+          track('email_registered', {
+            email_domain: email.split('@')[1] || 'unknown',
+          });
+        } catch (err) {
+          console.error('Email registration failed:', err);
+          showToast('Gagal mendaftar. Silakan coba lagi.', 'error');
+          track('email_registration_failed', {
+            error_type: err?.code || err?.message || 'unknown',
+          });
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
         }
       });
-    });
-
-    const initiallyActiveFeature = document.querySelector('.feature-item[aria-selected="true"]') || featureItems[0];
-    if (initiallyActiveFeature) activateFeature(initiallyActiveFeature);
-  </script>
-
-  <script>
-    // --- TRANSLATIONS OBJECT ---
-    const translations = {
-      // Navigation
-      nav_features: { en: "Features", id: "Fitur" },
-      nav_faq: { en: "FAQ", id: "Tanya Jawab" },
-      nav_contact: { en: "Contact", id: "Kontak" },
-      nav_features_mob: { en: "Features", id: "Fitur" },
-      nav_faq_mob: { en: "FAQ", id: "Tanya Jawab" },
-      nav_contact_mob: { en: "Contact", id: "Kontak" },
-      login_button: { en: "Login", id: "Masuk" },
-      login_button_mob: { en: "Login", id: "Masuk" },
-
-      // Hero
-      hero_badge: { en: "AI Powered", id: "Ditenagai AI" },
-      hero_title_part1: { en: "AI-powered expense tracking\nfor", id: "Pencatatan keuangan berbasis AI\nuntuk" },
-      hero_title_part2: { en: "", id: "" },
-      hero_typing_words: { en: ["Modern Muslims", "Your Family", "Smart Budgeting"], id: ["Muslim Modern", "Keluarga Anda", "Penganggaran Cerdas"] },
-      hero_subtitle: { en: "Track your daily expenses with AI, get Islamic finance guidance, and manage family budgets all in one app. Log transactions via WhatsApp or directly in the app.", id: "Lacak pengeluaran harian Anda dengan AI, dapatkan panduan keuangan Islami, dan kelola anggaran keluarga dalam satu aplikasi. Catat transaksi via WhatsApp atau langsung di aplikasi." },
-      hero_cta: { en: "Get Started", id: "Mulai Sekarang" },
-
-      // Features
-      features_badge: { en: "Features", id: "Fitur" },
-      features_title_part1: { en: "Everything you need <br /> to manage your", id: "Semua yang Anda butuhkan <br /> untuk mengelola" },
-      features_typing_words: { en: ["Expenses", "Budget", "Savings"], id: ["Pengeluaran", "Anggaran", "Tabungan"] },
-      features_subtitle: { en: "From AI-powered tracking to Islamic finance guidance, every feature is built to help you manage your finances wisely.", id: "Dari pencatatan berbasis AI hingga panduan keuangan Islami, setiap fitur dibuat untuk membantu Anda mengelola keuangan dengan bijak." },
-
-      // Feature items
-      feature_ai_title: { en: "AI Expense Tracking", id: "Pencatatan AI" },
-      feature_ai_desc: { en: "Let AI categorize and analyze your transactions. Scan receipts, auto-categorize expenses, and get smart spending insights.", id: "Biarkan AI mengkategorikan dan menganalisis transaksi Anda. Pindai struk, kategorisasi otomatis, dan dapatkan wawasan pengeluaran cerdas." },
-      feature_islamic_title: { en: "Islamic Finance Guidance", id: "Panduan Keuangan Islami" },
-      feature_islamic_desc: { en: "Receive Shariah-compliant financial recommendations to help your spending align with Islamic principles.", id: "Terima rekomendasi keuangan sesuai Syariah untuk membantu pengeluaran Anda selaras dengan prinsip Islam." },
-      feature_whatsapp_title: { en: "WhatsApp Integration", id: "Integrasi WhatsApp" },
-      feature_whatsapp_desc: { en: "Log transactions by simply sending a message to your WhatsApp group. Quick, easy, and accessible.", id: "Catat transaksi dengan mengirim pesan ke grup WhatsApp Anda. Cepat, mudah, dan praktis." },
-      feature_group_title: { en: "Group & Family Tracking", id: "Pencatatan Grup & Keluarga" },
-      feature_group_desc: { en: "Collaborate with family members to track household expenses. Everyone stays informed with shared spending reports.", id: "Berkolaborasi dengan anggota keluarga untuk melacak pengeluaran rumah tangga. Semua orang terinformasi dengan laporan pengeluaran bersama." },
-
-      // FAQ
-      faq_badge: { en: "FAQ", id: "Tanya Jawab" },
-      faq_title: { en: "Frequently Asked Questions", id: "Pertanyaan yang Sering Diajukan" },
-      faq_subtitle: { en: "Quick answers to help you get started with Safina.", id: "Jawaban cepat untuk membantu Anda memulai dengan Safina." },
-      faq_q1: { en: "How does AI expense tracking work?", id: "Bagaimana cara kerja pencatatan pengeluaran AI?" },
-      faq_a1: { en: "Our AI automatically categorizes your transactions, scans receipts, and provides spending insights. Just log your expenses via the app or WhatsApp, and the AI handles the rest.", id: "AI kami secara otomatis mengkategorikan transaksi Anda, memindai struk, dan memberikan wawasan pengeluaran. Cukup catat pengeluaran via aplikasi atau WhatsApp, dan AI akan menangani sisanya." },
-      faq_q2: { en: "What is Islamic finance guidance?", id: "Apa itu panduan keuangan Islami?" },
-      faq_a2: { en: "Safina provides Shariah-compliant recommendations for your expenses, helping you make financial decisions that align with Islamic principles.", id: "Safina menyediakan rekomendasi sesuai Syariah untuk pengeluaran Anda, membantu Anda membuat keputusan keuangan yang selaras dengan prinsip Islam." },
-      faq_q3: { en: "How does WhatsApp integration work?", id: "Bagaimana cara kerja integrasi WhatsApp?" },
-      faq_a3: { en: "You can log transactions by sending messages to your connected WhatsApp group. Simply type your expense, and Safina's AI will parse and record it automatically.", id: "Anda dapat mencatat transaksi dengan mengirim pesan ke grup WhatsApp yang terhubung. Cukup ketik pengeluaran Anda, dan AI Safina akan mengurai dan mencatatnya secara otomatis." },
-      faq_q4: { en: "Can I track expenses with my family?", id: "Bisakah saya melacak pengeluaran bersama keluarga?" },
-      faq_a4: { en: "Yes! Create a shared group to track household expenses together. Family members can log transactions and view shared spending reports.", id: "Ya! Buat grup bersama untuk melacak pengeluaran rumah tangga bersama. Anggota keluarga dapat mencatat transaksi dan melihat laporan pengeluaran bersama." },
-      faq_q5: { en: "Is my financial data secure?", id: "Apakah data keuangan saya aman?" },
-      faq_a5: { en: "Absolutely. All your data is stored securely. Only you and authorized family members can access your information.", id: "Tentu saja. Semua data Anda disimpan dengan aman. Hanya Anda dan anggota keluarga yang berwenang yang dapat mengakses informasi Anda." },
-      faq_q6: { en: "What languages does Safina support?", id: "Bahasa apa saja yang didukung Safina?" },
-      faq_a6: { en: "Currently Safina only supports Bahasa Indonesia.", id: "Saat ini Safina hanya mendukung Bahasa Indonesia." },
-
-      // Footer
-      footer_copyright: { en: "© 2025 <a href='/' class='underline'>safinalab.id</a> All Rights Reserved", id: "© 2025 <a href='/' class='underline'>safinalab.id</a> Hak Cipta Dilindungi" },
-    };
-
-    // --- Reusable Typing Animator Class ---
-    class TypingAnimator {
-      constructor(elementId) {
-        this.element = document.getElementById(elementId);
-        this.words = [];
-        this.wordIndex = 0;
-        this.charIndex = 0;
-        this.isDeleting = false;
-        this.timeout = null;
-      }
-
-      type() {
-        if (!this.words || this.words.length === 0 || !this.element) return;
-
-        const currentWord = this.words[this.wordIndex];
-        const displayedText = this.isDeleting
-          ? currentWord.substring(0, this.charIndex - 1)
-          : currentWord.substring(0, this.charIndex + 1);
-
-        this.element.textContent = displayedText;
-        this.charIndex = this.isDeleting ? this.charIndex - 1 : this.charIndex + 1;
-
-        let delay = this.isDeleting ? 100 : 200;
-
-        if (!this.isDeleting && this.charIndex === currentWord.length) {
-          delay = 2000;
-          this.isDeleting = true;
-        } else if (this.isDeleting && this.charIndex === 0) {
-          this.isDeleting = false;
-          this.wordIndex = (this.wordIndex + 1) % this.words.length;
-          delay = 500;
-        }
-
-        this.timeout = setTimeout(() => this.type(), delay);
-      }
-
-      start(words) {
-        this.stop();
-        this.words = words;
-        this.wordIndex = 0;
-        this.charIndex = 0;
-        this.isDeleting = false;
-        this.type();
-      }
-
-      stop() {
-        clearTimeout(this.timeout);
-        if (this.element) {
-          this.element.textContent = "";
-        }
-      }
-    }
-
-    // --- Main Application Logic ---
-    const langSwitcher = document.getElementById("lang-switcher");
-    const langBtn = document.getElementById("lang-btn");
-    const langMenu = document.getElementById("lang-menu");
-    const langText = document.getElementById("lang-text");
-
-    // Create instances of the animator for each element
-    const heroAnimator = new TypingAnimator('typing-effect');
-    const featuresAnimator = new TypingAnimator('typing-effect-features');
-
-    langBtn.addEventListener("click", () => {
-      langMenu.classList.toggle("hidden");
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!langSwitcher.contains(event.target)) {
-        langMenu.classList.add("hidden");
-      }
-    });
-
-    const setLanguage = (lang) => {
-      document.querySelectorAll("[data-translate-key]").forEach(el => {
-        const key = el.getAttribute("data-translate-key");
-        if (translations[key] && translations[key][lang] !== undefined) {
-          // Convert newlines to <br> tags
-          const text = translations[key][lang].replace(/\n/g, '<br>');
-          el.innerHTML = text;
-        }
-      });
-
-      langText.textContent = lang.toUpperCase();
-      localStorage.setItem("language", lang);
-      langMenu.classList.add("hidden");
-
-      // Start both animations with the correct language words
-      heroAnimator.start(translations.hero_typing_words[lang]);
-      featuresAnimator.start(translations.features_typing_words[lang]);
-    };
-
-    langMenu.addEventListener("click", (e) => {
-      e.preventDefault();
-      const selectedLang = e.target.getAttribute("data-lang");
-      if (selectedLang) {
-        setLanguage(selectedLang);
-      }
-    });
-
-    const savedLang = localStorage.getItem("language") || "id";
-    setLanguage(savedLang);
-  </script>
-
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
